@@ -1,0 +1,8 @@
+**.md
+docs
+build
+.git
+.gitignore
+README.md
+helm
+test
