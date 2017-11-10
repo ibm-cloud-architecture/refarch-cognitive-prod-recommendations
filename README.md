@@ -26,6 +26,7 @@ The code is a reuse of the conversation broker code detailed in [this project](h
 * [Cognitive conversation paper](https://www.ibm.com/devops/method/content/architecture/cognitiveConversationDomain)
 * [Decision Composer]
 * [Operational Decision Management]
+* [Run your business decisions in Kubernetes](https://www.ibm.com/developerworks/library/mw-1706-feillet-bluemix/1706-feillet.html)
 
 
 
