@@ -2,12 +2,12 @@
     "conversation" :{
       "version" : "v1",
       "versionDate":"2017-02-03",
-      "username":"291d9397-073f-46d9-b0d2-11b54e6ae533",
-      "password":"aDFBIIPYkQlD",
-      "workspace1":"1a3b01f3-4757-444d-a933-a1e648babfc1",
-      "conversationId":"ITSupportConversation",
-      "workspace2":"80b451cc-d4eb-43bf-a4ac-359599cd2405",
-      "workspace3":"6d779e17-922b-4e91-928d-4d63dfaf4ee6",
+      "username":"627ffa01-0e3a-46e7-b339-c5adaa6cf21b",
+      "password":"QwKEBxKICa7R",
+      "workspace1":"",
+      "conversationId":"Conversation-Demo",
+      "workspace2":"",
+      "workspace3":"bb73f553-aaac-44f5-9b28-33a803aa4021",
       "usePersistence": false
     },
     "debug":true,
