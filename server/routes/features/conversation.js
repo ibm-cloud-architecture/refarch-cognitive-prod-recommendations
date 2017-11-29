@@ -15,6 +15,7 @@
  */
 const watson = require('watson-developer-cloud');
 //const persist= require('./persist');
+const odmclient = require('./ODMClient');
 
 module.exports = {
   /**
@@ -29,7 +30,11 @@ module.exports = {
        if (config.debug) {console.log(" Advisor <<< "+JSON.stringify(response,null,2));}
        if (response.Error !== undefined) {
          res.status(500).send({'text':response.Error});
-       } else {
+       } else if (response.context.action === "recommend") {
+           // remove next line
+           response.text= response.text+ "<br/>Let call ODM now";
+           odmclient.recommend(config,response,res);   
+       }else {
            response.text="<p>"+response.output.text[0]+"</p>";
 
            if (response.context.action === "click") {

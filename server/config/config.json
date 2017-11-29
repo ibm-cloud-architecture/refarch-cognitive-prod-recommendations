@@ -10,6 +10,10 @@
       "workspace3":"bb73f553-aaac-44f5-9b28-33a803aa4021",
       "usePersistence": false
     },
+    "odm" : {
+      "url": "https://brsv2-df0a28d7.ng.bluemix.net/DecisionService/rest",
+      "authtoken":"Basic cmVzQWRtaW46MWpldzFyNTc1enU1ZA=="
+    },
     "debug":true,
     "port": 3001,
     "version": "v0.0.7"
