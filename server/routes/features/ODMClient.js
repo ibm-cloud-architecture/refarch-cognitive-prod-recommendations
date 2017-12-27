@@ -17,7 +17,8 @@
 This module delegate the recommendation to a decision service deployed on ODM platform.
 Author: IBM - Jerome Boyer
 */
-var http = require('http');
+var http = require('https');
+
 
 module.exports=  {
   /**
@@ -26,18 +27,41 @@ module.exports=  {
   recommend : function(config,wcsresponse,res){
     // perform the POST
     var options = {
-      url: config.odm.url,
+      protocol: "https:",
+      hostname: config.odm.hostname,
+      port: config.odm.port,
+      path: config.odm.path,
+      method: 'POST',
       headers: {
          "accept": "application/json",
          "content-type": "application/json",
           authorization: config.odm.authtoken
-      },
-      method: 'POST'
+      }
     }
-    var req=http.request(options, function(odmrep,res){
-           res.status(200).send(odmrep);
-    }); // prepare HTTP request
-    req.write(JSON.stringify({wcscontext: wcsresponse}));
+    console.log("Options: " + JSON.stringify(options));
+
+	var req = http.request(options, function(res) {
+		if (config.debug) {
+			console.log('STATUS: ' + res.statusCode);
+			console.log('HEADERS: ' + JSON.stringify(res.headers));
+		}
+		res.setEncoding('utf8');
+		res.on('data', function (chunk) {
+			if (config.debug) {
+    			console.log('chunk: ' + chunk);
+    		}
+		});
+	});
+
+	req.on('error', function(e) {
+		console.log('problem with request: ' + e.message);
+	});
+	var data = JSON.stringify(wcsresponse.context.recommend_data); 
+	if (config.debug) {
+		console.log('Sending data: ' + data);
+	}
+    
+    req.write(data);
     req.end();
   }
 }

@@ -31,8 +31,6 @@ module.exports = {
        if (response.Error !== undefined) {
          res.status(500).send({'text':response.Error});
        } else if (response.context.action === "recommend") {
-           // remove next line
-           response.text= response.text+ "<br/>Let call ODM now";
            odmclient.recommend(config,response,res);   
        }else {
            response.text="<p>"+response.output.text[0]+"</p>";

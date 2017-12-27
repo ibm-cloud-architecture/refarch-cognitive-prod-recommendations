@@ -11,8 +11,10 @@
       "usePersistence": false
     },
     "odm" : {
-      "url": "https://brsv2-df0a28d7.ng.bluemix.net/DecisionService/rest",
-      "authtoken":"Basic cmVzQWRtaW46MWpldzFyNTc1enU1ZA=="
+      "hostname": "brsv2-f48f93f0.ng.bluemix.net",
+      "port": 443,
+      "path": "/DecisionService/rest/v1/Networksubscriptionrecommendation_RuleApp/Networksubscriptionrecommendation",
+      "authtoken":"Basic cmVzQWRtaW46dTd6bWJkZGdpbHdq"
     },
     "debug":true,
     "port": 3001,
