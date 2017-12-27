@@ -23,7 +23,7 @@ module.exports=  {
   /**
   The wcsresponse is the conversation response that may be enriched with other data before going to ODM
   */
-  recommend = function(config,wcsresponse,res){
+  recommend : function(config,wcsresponse,res){
     // perform the POST
     var options = {
       url: config.odm.url,
