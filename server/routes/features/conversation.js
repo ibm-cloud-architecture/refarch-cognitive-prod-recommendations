@@ -26,12 +26,12 @@ module.exports = {
      req.body.context.action="";
      req.body.context.predefinedResponses="";
    }
-   sendMessage(config,req,config.conversation.workspace3,res,function(config,res,response) {
+   sendMessage(config,req,config.conversation.workspace,res,function(config,res,response) {
        if (config.debug) {console.log(" Advisor <<< "+JSON.stringify(response,null,2));}
        if (response.Error !== undefined) {
          res.status(500).send({'text':response.Error});
        } else if (response.context.action === "recommend") {
-           odmclient.recommend(config,response,res);   
+           odmclient.recommend(config,response,res);
        }else {
            response.text="<p>"+response.output.text[0]+"</p>";
 

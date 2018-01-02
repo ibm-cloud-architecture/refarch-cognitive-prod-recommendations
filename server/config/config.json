@@ -1,22 +1,20 @@
 {
     "conversation" :{
       "version" : "v1",
-      "versionDate":"2017-02-03",
-      "username":"627ffa01-0e3a-46e7-b339-c5adaa6cf21b",
-      "password":"QwKEBxKICa7R",
-      "workspace1":"",
-      "conversationId":"Conversation-Demo",
-      "workspace2":"",
-      "workspace3":"bb73f553-aaac-44f5-9b28-33a803aa4021",
+      "versionDate":"2017-05-26",
+      "username":"291d9397-073f-46d9-b0d2-11b54e6ae533",
+      "password":"aDFBIIPYkQlD",
+      "conversationId":"Complex Relocation",
+      "workspace":"a97a02e3-d3c3-48de-8e64-20502819e582",
       "usePersistence": false
     },
     "odm" : {
-      "hostname": "brsv2-f48f93f0.ng.bluemix.net",
+      "hostname": "brsv2-df0a28d7.ng.bluemix.net",
       "port": 443,
       "path": "/DecisionService/rest/v1/Networksubscriptionrecommendation_RuleApp/Networksubscriptionrecommendation",
-      "authtoken":"Basic cmVzQWRtaW46dTd6bWJkZGdpbHdq"
+      "authtoken":"Basic cmVzQWRtaW46MWpldzFyNTc1enU1ZA=="
     },
     "debug":true,
     "port": 3001,
-    "version": "v0.0.7"
+    "version": "v0.0.1"
 }
