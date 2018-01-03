@@ -33,7 +33,6 @@ With these steps done, the broker will now be able to access you own instance of
 
 1. In IBM Cloud, create an instance of the Business Rule Service: Using the `Catalog > Application Services > Business Rules`. Select the `Connection Settings` tab to open the Rule Execution Server console by clicking the Open Console link (highlighted below) and supplying the credentials 'resAdmin / your password'.
   ![](docs/br4bmx_credentials.png)  
-
   Using the About dialog box, verify that your version number is at least *8.9.1.0* IFix 10, as shown below. If you already had an instance of the Business Rule Service and its older than that, it will not work with Decision Composer.
   ![](docs/br4bmx_version.png)  
 
@@ -48,7 +47,6 @@ With these steps done, the broker will now be able to access you own instance of
 ```
 
 1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) import the _Network_subscription_recommendation_ project and examine it. You can `Test` it within Decision Composer, sample input data is provided. The following screen shot illustrates the a customer, named 'Young' and the output from the rule execution, recommending a Fiber subscription at 25$.  
-
 ![](docs/decision-comp-test.png)
 
 1. Deploy rules to decision service: from the Home page of `Decision Composer`, click on the project's menu (three vertical dots) and use the `Deploy` choice deploy the decision definition to the Business Rules Service instance you've created earlier. This will be needed for runtime execution. The created path for the RuleApp and ruleset is `/Networksubscriptionrecommendation_RuleApp/Networksubscriptionrecommendation/`. This path needs to be added to the `config.json`.
@@ -59,8 +57,9 @@ With these steps done, the broker will now be able to access you own instance of
 npm install
 npm run dev build
 ```
-* Point your browser to `http://localhost:3001`, select the `Support Bot` the advisor will display:
+* Point your browser to `http://localhost:3001`, select the `Support Bot` the advisor will display the chat panel:
 ![](docs/advisor_1.png)  
+The 'select' widget is for demonstration to select one of the predefined customer.
 
 ## Watson Conversation Logic
 For deep dive tutorial on Watson Conversation see [this documentation](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support). Ib this implementation there is one intent to assess the relocation question. One entity to define the potential subscription a customer may have. The values for this entities could come from a MDM reference data. The dialog flow is simple with one main node to process the relocation request.
