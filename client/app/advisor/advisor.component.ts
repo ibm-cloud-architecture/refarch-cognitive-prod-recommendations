@@ -12,25 +12,36 @@ import { Sentence } from "./Sentence";
 export class AdvisorComponent {
   currentDialog : Sentence[]=[];
   context:any={};
+  customers = [  {value: 'young', viewValue: 'Studiant'},
+                 {value: 'retiree', viewValue: 'Retiree'},
+                 {value: 'adult', viewValue: 'Standard'},
+                 {value: 'noFiber', viewValue: 'NoFiber'}
+              ];
+  selectedProfile:string="adult";
   message:string;
   /**
   When creating a conversation component call Watson to get a greetings message as defined in the Dialog. This is more user friendly.
   */
   constructor(private convService : AdvisorService){
-    // Uncomment this line if you do not have a conversation_start trigger in a node of your dialog
-    this.callConversationBFF("Hello");
+    // comment the line below if you do not have a conversation_start trigger in a node of your dialog
+    //this.callConversationBFF("Hello");
   }
 
   // variable used for the input field in html page to get user query
   queryString=""
 
   callConversationBFF(msg:string) {
+    this.context.user=this.selectedProfile;
     this.convService.submitMessage(msg,this.context).subscribe(
       data => {
         this.context=data.context;
         let s:Sentence = new Sentence();
         s.direction="from-watson";
-        s.text=data.text;
+        s.text="";
+        for (var t of data.output.text) {
+            s.text+=t+"<br/>";
+        }
+
         s.options=data.context.predefinedResponses;
         this.currentDialog.push(s)
       },

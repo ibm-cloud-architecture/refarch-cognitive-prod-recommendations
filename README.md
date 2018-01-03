@@ -1,4 +1,4 @@
-# Telecom Product Recommendations with Watson Conversation and Decision Management
+# Product Recommendations with Watson Conversation and Decision Management
 
 This project demonstrates how to leverage Watson Conversation to gather information about the customer intent, and propose the best product recommendations from his profile and the set of answers / facts gathered during the conversation.
 
@@ -17,7 +17,7 @@ From a design and implementation point of view the solution illustrates how to c
 This project shows how a customer could have a dialog with his telco operator when he wants to move. The chatbot will detect the intent to move, and ask questions to get the data of the move and the zipcode of the new address. The idea is to use the date to check if the telco provider can actually provide a transfer of service before the move date. And to check the available services at the destination address, so as to recommend the best product or bundle.
 So the bot gathers the data from the customer, and at a given point of the dialog, the broker will invoke a Decision Service, implemented with ODM Decision Composer, and executed using IBM Cloud Business rule service.
 
-![](docs/advisor_2.png)
+![](docs/advisor_1.png)
 
 ## Build and run
 The code is a reuse of the conversation broker code detailed in [this project](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker)
@@ -32,10 +32,10 @@ In summary, follow those steps:
 With these steps done, the broker will now be able to access you own instance of the WCS service, invoking your own copy of the conversation project.
 
 1. In IBM Cloud, create an instance of the Business Rule Service: Using the `Catalog > Application Services > Business Rules`. Select the `Connection Settings` tab to open the Rule Execution Server console by clicking the Open Console link (highlighted below) and supplying the credentials 'resAdmin / your password'.
-![](docs/br4bmx_credentials.png)  
+  ![](docs/br4bmx_credentials.png)  
 
- Using the About dialog box, verify that your version number is at least *8.9.1.0* IFix 10, as shown below. If you already had an instance of the Business Rule Service and its older than that, it will not work with Decision Composer.
-![](docs/br4bmx_version.png)  
+  Using the About dialog box, verify that your version number is at least *8.9.1.0* IFix 10, as shown below. If you already had an instance of the Business Rule Service and its older than that, it will not work with Decision Composer.
+  ![](docs/br4bmx_version.png)  
 
 1. Get service connection parameters: go back to the `Connection Settings` page of the Business Rules service on IBM Cloud, and use the information in the bottom section to update your `config.json` file with the correct `odm.hostname` and `odm.authtoken` (at the bottom of the page, under the label "Basic Auth").
 ```json
@@ -47,41 +47,82 @@ With these steps done, the broker will now be able to access you own instance of
 },
 ```
 
-1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) import the _Network_subscription_recommendation_ project and examine it. You can `Test` it within Decision Composer, sample input data is provided. The following screen shot illustrates the a customer, named 'Young' and the output from the rule execution, recommending a Fiber subscription at 25$.
+1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) import the _Network_subscription_recommendation_ project and examine it. You can `Test` it within Decision Composer, sample input data is provided. The following screen shot illustrates the a customer, named 'Young' and the output from the rule execution, recommending a Fiber subscription at 25$.  
+
 ![](docs/decision-comp-test.png)
 
-* from the Home page of Decision Composer, click on the project's menu and Deploy it to the Business Rules Service instance you've created earlier. This will be needed for runtime execution.
+1. Deploy rules to decision service: from the Home page of `Decision Composer`, click on the project's menu (three vertical dots) and use the `Deploy` choice deploy the decision definition to the Business Rules Service instance you've created earlier. This will be needed for runtime execution. The created path for the RuleApp and ruleset is `/Networksubscriptionrecommendation_RuleApp/Networksubscriptionrecommendation/`. This path needs to be added to the `config.json`.
 
-* go back to the root of the repository, execute the following commands:
+### Execute the web app locally.
+* Go back to the root of the repository, execute the following commands to get node packages dependencies, build the angular 4 front end, and start the web server:
 ```
 npm install
-ng build
-npm start
+npm run dev build
 ```
-* and point your browser to localhost:3001
-The advisor will display:
-![](docs/advisor_1.png)
+* Point your browser to `http://localhost:3001`, select the `Support Bot` the advisor will display:
+![](docs/advisor_1.png)  
+
+## Watson Conversation Logic
+For deep dive tutorial on Watson Conversation see [this documentation](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support). Ib this implementation there is one intent to assess the relocation question. One entity to define the potential subscription a customer may have. The values for this entities could come from a MDM reference data. The dialog flow is simple with one main node to process the relocation request.
+![](docs/dialog_flow.png)   
+
+The node uses slots with the predefined system entities of date and number, and ask related questions if they were not identified.
+![](docs/dialog_slots.png)
+
+The response part is using the context object to set an action variable that will be used by the conversation broker code to propagate the conversation context to ODM for the rule processing:
+![](docs/recommend_actions.png)
+
+Finally when the recommendation comes back from ODM, it is a new object in the context. So it is easy in a child node to build an appropriate message.
+![](docs/recomm_msg.png)
+
+We use this approach to keep the conversation inside WCS. It will be possible to build the response directly inside the rules and the conversation broker will present directly the response from ODM to the end user.  
 
 ## ODM Decision Composer project
+Using Decision Composer, business users can define the decision logic to support a decision point in a business process. They defines the data model for the deployable decision service. The following diagram shows that the product `recommendation` is the top decision, and user can define the decision logic using a graph:
+
 ![](docs/dcomp_1.png)
+
 The project decides what product to recommend based on two input data: the Zipcode the customer wants to move to, and the Customer record itself. It is composed of two sub-decisions:
 * _Subscription by zip code_ computes which service is available at the destination address. In this case, we've simply captured this information in a simple decision table.
 * _Determine category_ is establishing the customer profile based on its data. Here we're simply classifying the customers in 3 groups: Student, Adult, Retiree, which are used in the final decision.
-The main decision, _Recommendation_ is implemented by a Decision Table:
-![](docs/dcomp_2.png)
-which is built to suggest Adult and Students to upgrade to Fibre access (if available), while giving a discount to Students.
 
+The main decision, _Recommendation_ is implemented by a Decision Table: Each row is a rule, light grey columns are conditions on data, and darker grey columns are action, setting the type of product and price tag:
+![](docs/dcomp_2.png)
+
+which is built to suggest Adult and Students to upgrade to Fiber access (if available), while giving a discount to Students and Retired.
+
+Once deployed to the business rule service the decision is a ruleset in the ODM Business rule services as illustrated in the screen shot below
+![](docs/deployed-rs.png)
 
 ## Code explanation
 The two most important points to be noted in the code base are:
 
-server/routes/features/conversation.js is the code that handle the round-trip with Watson Conversation. It stores the conversation context and sends it back to WCS everytime the user enter something in the input textfield. WXS then performs natural language recognition, detects where we are in the dialog, and returns an updated context. When this code sees the "recommend" keyword in the "actions" part of the context, it knows its time to call ODM, and delegate this work to the ODMClient class.
+* server/routes/features/conversation.js is the code that handle the round-trip with Watson Conversation. It stores the conversation context and sends it back to WCS every time the user enters something in the input textfield. WCS then performs natural language understanding, detects the intent, and where to continue the dialog, and returns an updated context. When this code sees the `recommend` keyword in the "actions" part of the context, it knows its time to call ODM.
 
-ODMClient.js handles the call to the ODM Decision Service. It gathers input data by colating both the WCS context object and additional external data - in this case a Customer record. Then it invokes the Decision Service through a REST POST on the Business Rule Service instance you've created. Finally, when the output is obtained - the Decision - it adds it back to the context so that Watson Conversation can use it, in this case to display the recommended product.
+* ODMClient.js handles the call to the ODM Decision Service. It gathers input data by merging the WCS context object and additional external data - in this case a Customer record. Then it invokes the Decision Service through a REST POST on the Business Rule Service instance you've created. Finally, when the output is obtained - the Decision - it adds it back to the Watson Conversation context and recalls the conversation for getting the final message.
+
+```javascripts
+if (response.context.action === "recommend") {
+    odmclient.recommend(config,response,res, function(odmResponse){
+      if (config.debug) {
+          console.log('Sent back to WCS: ' + odmResponse);
+      }
+      sendMessage(config,odmResponse,config.conversation.workspace,res,function(config,res,response){
+            res.status(200).send(response);
+          });
+
+    });
+```
+One of the programming challenge is to play well with the asynchronous call done by the HTTP module and chain callback function. In the code above the third argument is the next function to call when the HTTP response arrived in the ODM client. SendMessage is the method used to call Watson Conversation.
+
+## Potential improvements
+The data model for the rule execution can be enriched and defined as a Java model, then a dedicated rule project can be done and deployed using the standard ODM concept of operations and tooling.
 
 ## Compendium
 * [Cognitive conversation paper](https://www.ibm.com/devops/method/content/architecture/cognitiveConversationDomain)
+* [Watson Conversation Training](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support)
 * [ODM Decision composer](http://ibm.biz/DecisionComposer)
+* [Angular 2 Material](https://material.angular.io/components/categories) used for widget in UI.
 
 
 ## Contribute

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 IBM Corp. All Rights Reserved.
+ * Copyright 2017 IBM Corp. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,15 +26,23 @@ module.exports = {
      req.body.context.action="";
      req.body.context.predefinedResponses="";
    }
-   sendMessage(config,req,config.conversation.workspace,res,function(config,res,response) {
+   sendMessage(config,req.body,config.conversation.workspace,res,function(config,res,response) {
        if (config.debug) {console.log(" Advisor <<< "+JSON.stringify(response,null,2));}
        if (response.Error !== undefined) {
          res.status(500).send({'text':response.Error});
        } else if (response.context.action === "recommend") {
-           odmclient.recommend(config,response,res);
+           odmclient.recommend(config,response,res, function(odmResponse){
+             if (config.debug) {
+                 console.log('Sent back to WCS: ' + odmResponse);
+             }
+            sendMessage(config,odmResponse,config.conversation.workspace,res,function(config,res,response){
+                   res.status(200).send(response);
+                 });
+           });
+
        }else {
            response.text="<p>"+response.output.text[0]+"</p>";
-
+           //  support multiple choices response
            if (response.context.action === "click") {
                response.text= response.text+ "<br/><a class=\"btn btn-primary\" href=\""+response.context.url+"\">"+response.context.buttonText+"</a>"
            }
@@ -47,8 +55,7 @@ module.exports = {
 // ------------------------------------------------------------
 // Private
 // ------------------------------------------------------------
-var sendMessage = function(config,req,wkid,res,next){
-  var message =req.body;
+var sendMessage = function(config,message,wkid,res,next){
   if (config.debug) {
       console.log("--- Connect to Watson Conversation named: " + config.conversation.conversationId);
       console.log(">>> "+JSON.stringify(message,null,2));
@@ -74,8 +81,8 @@ var sendMessage = function(config,req,wkid,res,next){
           next(config,res,{'Error': "Communication error with Watson Service. Please contact your administrator"});
         } else {
           if (config.conversation.usePersistence) {
-              response.context.persistId=req.body.context.persistId;
-              response.context.revId=req.body.context.revId;
+              response.context.persistId=message.context.persistId;
+              response.context.revId=message.context.revId;
               persist.saveConversation(config,response,function(persistRep){
                     response.context.persistId=persistRep.id;
                     response.context.revId=persistRep.rev;

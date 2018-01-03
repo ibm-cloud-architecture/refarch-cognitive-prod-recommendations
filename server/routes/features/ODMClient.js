@@ -25,7 +25,7 @@ module.exports=  {
   The wcsresponse is the Conversation response. ODM will use its variables, plus extra data to take a decision.
   ODM output will be added to the Conversation context as well.
   */
-  recommend : function(config,wcsresponse,response){
+  recommend : function(config,wcsresponse,response,next){
     // Config for the POST to the ODM Rule Execution Server
     var options = {
       protocol: "https:",
@@ -53,32 +53,28 @@ module.exports=  {
 		// This is where we grab this data - which is the Decision output -
 		// and add it back to the Watson Conversation context
 		res.on('data', function (chunk) {
-			if (config.debug) {
-    			console.log('Received from ODM: ' + chunk);
-    		}
-    		var responseText = addODMOutputToWCSReponse(wcsresponse, chunk);
-			if (config.debug) {
-    			console.log('Sent back to WCS: ' + responseText);
-    		}
-    		response.status(200).send(responseText);
+  			if (config.debug) {
+      			console.log('Received from ODM: ' + chunk);
+      	}
+      	next(addODMOutputToWCSReponse(wcsresponse, chunk));
 		});
 	});
 
 	req.on('error', function(e) {
 		console.log('problem with request: ' + e.message);
 	});
-	
-	// uploads the ODM input data in the POST call	
-    req.write(computeODMInputData(config,wcsresponse));
-    req.end();
-  }
-}
+
+	// uploads the ODM input data in the POST call
+  req.write(computeODMInputData(config,wcsresponse));
+  req.end();
+ } // recommend function
+} // exports
 
 // ------------------------------------------------------------
 // Private
 // ------------------------------------------------------------
 
-  
+
 // Computes the data that we need to upload to ODM for taking the Decision
 // The choice here is to include two things:
 // - the context part of the Watson Conversation response. This is where data that has been gathered
@@ -105,7 +101,7 @@ var computeODMInputData = function(config,wcsresponse) {
 		young, // or pick another of the predefined data above
 		"}"
 		);
-	
+
 	if (config.debug) {
 		console.log('Sending data: ' + data);
 	}
@@ -121,5 +117,5 @@ var addODMOutputToWCSReponse = function(wcsresponse, odmOutput) {
 		"}");
 	wcsresponse.context=JSON.parse(augmentedContextJSON);
 
-	return JSON.stringify(wcsresponse);
+	return wcsresponse;
 } // addODMOutputToWCSReponse

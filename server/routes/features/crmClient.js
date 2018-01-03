@@ -13,25 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const express = require('express');
-const conversation = require('./features/conversation');
+ /**
+ Delegate to CRM API
+ */
 
-/** Export the APIs for the front end */
-module.exports = function(app,config) {
-  /* GET api listing. */
-  app.get('/', (req, res) => {
-    res.send('API supported: GET /healthz; POST /api/advisor; ');
-  });
-  app.get('/healthz',(req,res) => {
-    res.send('UP and running');
-  });
-  // Support REST call
-  app.post('/api/advisor',function(req,res){
-      if(!req.body){
-        res.status(400).send({error:'no post body'});
-      } else {
-          conversation.advisor(config,req,res);
-        }
-  });
-
-} // exports
+ module.exports=  {
+    userProfile = function(){
+      
+    }
+ }

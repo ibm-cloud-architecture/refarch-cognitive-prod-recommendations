@@ -5,15 +5,24 @@
 </div>
 <div class='row'>
   <div class='col-xs-4'>
-    <p>Welcome! This application is a demonstration for product recommendations based on Watson conversation context. When the bot detects that you, as a customer of a telco provider, want to relocate, it will ask you about your target zipcode as well as your anticipated move date, and will use this data, as well as existing customer data, to offer a personalised recommendation on which new telco service and price you should get at your target address.</p>
-    <p>Use one of the following questions to get trained answers:</p>
-    <ul>
-      <li>I want to relocate to <></li>
-      <li>I want to move</li>
-    </ul>
-  <br/>
-</div>
+      <p>Welcome! This application is a demonstration for product recommendations based on Watson conversation context. When the bot detects that you, as a customer of a telco provider, want to relocate, it will ask you about your target zipcode as well as your anticipated move date, and will use this data, as well as existing customer data, to offer a personalised recommendation on which new telco service and price you should get at your target address.</p>
+      <p>Use one of the following questions to get trained answers:</p>
+      <ul>
+        <li>I want to relocate to <></li>
+        <li>I want to move</li>
+      </ul>
+    <br/>
+  </div>
   <div class="col-xs-8">
+     <div class="row">
+       <mat-form-field>
+          <mat-select placeholder="Select Predefined Customer Profile" [(value)]="selectedProfile">
+            <mat-option *ngFor="let c of customers" [value]="c.value">
+              {{ c.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+     </div>
      <div class="conversation-container">
         <div class="scrolling-box">
           <div *ngFor="let p of currentDialog">
