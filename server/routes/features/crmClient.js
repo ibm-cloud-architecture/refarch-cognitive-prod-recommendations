@@ -17,8 +17,17 @@
  Delegate to CRM API
  */
 
- module.exports=  {
-    userProfile = function(){
-      
+// mockup of the customer data source
+var customers = {}
+customers["young"]={"age":18,"subscription":"ADSL"};
+customers["noFiber"] = {"age":30,"subscription":"ADSL"};
+customers["retiree"]={"age":65,"subscription":"ADSL"};
+customers["adult"]={"age":36,"subscription":"ADSL"};
+
+module.exports=  {
+    getUserProfile: function(config,user,next){
+      // config to be used later when doing http request
+      var c= customers[user];
+      next(c);
     }
  }

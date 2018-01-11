@@ -18,11 +18,11 @@ This module delegate the recommendation to a decision service deployed on ODM pl
 Author: IBM - Jerome Boyer / Guilhem Molines
 */
 var http = require('https');
-
+var crmClient = require('./crmClient');
 
 module.exports=  {
   /**
-  The wcsresponse is the Conversation response. ODM will use its variables, plus extra data to take a decision.
+  The wcsresponse is the Conversation response. ODM will use its variables set in the context, plus extra data to take a decision.
   ODM output will be added to the Conversation context as well.
   */
   recommend : function(config,wcsresponse,response,next){
@@ -56,7 +56,7 @@ module.exports=  {
   			if (config.debug) {
       			console.log('Received from ODM: ' + chunk);
       	}
-      	next(addODMOutputToWCSReponse(wcsresponse, chunk));
+      	next(addODMOutputToWCSReponse(wcsresponse, JSON.parse(chunk)));
 		});
 	});
 
@@ -65,8 +65,11 @@ module.exports=  {
 	});
 
 	// uploads the ODM input data in the POST call
-  req.write(computeODMInputData(config,wcsresponse));
-  req.end();
+  prepareODMInputData(config,wcsresponse, function(data){
+    req.write(data);
+    req.end();
+  });
+
  } // recommend function
 } // exports
 
@@ -78,44 +81,23 @@ module.exports=  {
 // Computes the data that we need to upload to ODM for taking the Decision
 // The choice here is to include two things:
 // - the context part of the Watson Conversation response. This is where data that has been gathered
-//   by the bot during the conversation is stored, and the Decision Services may rely on some of these
-//   Note: we don't send the full response object to reduce the size, only the context is interesting.
-// - additional data that is gathered from outside of the bot conversation. In this demo
-//   we send a dummy (hardcoded) customer. In real life, this would be obtained from a CRM system
-//   based on the information we know when the customer engages with the bot upon login.
-var computeODMInputData = function(config,wcsresponse) {
-
-	// predefined data, would live in a CRM
-	var young   = '"Customer":{"age":18,"subscription":"ADSL"}';
-	var noFiber = '"Customer":{"age":18,"subscription":"ADSL"}';
-	var retiree = '"Customer":{"age":65,"subscription":"ADSL"}';
-	var adult   = '"Customer":{"age":26,"subscription":"ADSL"}';
-
-
-	var wcsContext = JSON.stringify(wcsresponse.context);
-	// build the data with 1/ the WCS context 2/ minus the ending curly bracket
-	// 3/ plus a comma 4/ plus the external data 5/ plus the final curly bracket
-	var data = "".concat(
-		wcsContext.substring(0, wcsContext.length -1),
-		",",
-		young, // or pick another of the predefined data above
-		"}"
-		);
-
-	if (config.debug) {
-		console.log('Sending data: ' + data);
-	}
-	return data;
-} // computeODMInputData
+//   by the bot during the conversation are stored, and the Decision Services may rely on some of these
+// data to take decision
+var prepareODMInputData = function(config,wcsresponse,next) {
+  crmClient.getUserProfile(config,wcsresponse.context.user, function(data) {
+      wcsresponse.context["Customer"]=data;
+      var contextJSON = JSON.stringify(wcsresponse.context);
+      // for ODM just send the context
+      if (config.debug) {
+        console.log('Sending data: ' +contextJSON);
+      }
+      next(contextJSON);
+   }
+  )
+} // prepareODMInputData
 
 var addODMOutputToWCSReponse = function(wcsresponse, odmOutput) {
-	var contextJSON = JSON.stringify(wcsresponse.context);
-	var augmentedContextJSON = "".concat(
-		contextJSON.substring(0, contextJSON.length -1),
-		",",
-		odmOutput.substring(1,odmOutput.length - 1),
-		"}");
-	wcsresponse.context=JSON.parse(augmentedContextJSON);
-
+  wcsresponse.context["__DecisionID__"]=odmOutput["__DecisionID__"];
+  wcsresponse.context["Recommendation"]=odmOutput["Recommendation"];
 	return wcsresponse;
 } // addODMOutputToWCSReponse

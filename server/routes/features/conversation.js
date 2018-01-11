@@ -21,21 +21,22 @@ module.exports = {
   /**
   Specific logic for the conversation related to Product recommendation.
   */
-  advisor : function(config,req,res) {
+  chatWithMe : function(config,req,res) {
    if ( req.body.context !== undefined) {
      req.body.context.action="";
      req.body.context.predefinedResponses="";
    }
    sendMessage(config,req.body,config.conversation.workspace,res,function(config,res,response) {
-       if (config.debug) {console.log(" Advisor <<< "+JSON.stringify(response,null,2));}
+       if (config.debug) {console.log(" <<< from Advisor"+JSON.stringify(response,null,2));}
        if (response.Error !== undefined) {
          res.status(500).send({'text':response.Error});
        } else if (response.context.action === "recommend") {
            odmclient.recommend(config,response,res, function(odmResponse){
              if (config.debug) {
-                 console.log('Sent back to WCS: ' + odmResponse);
+                 console.log('Sent back to WCS: ' +JSON.stringify(odmResponse,null,2) );
              }
-            sendMessage(config,odmResponse,config.conversation.workspace,res,function(config,res,response){
+            sendMessage(config,odmResponse,config.conversation.workspace,res,
+                 function(config,res,response){
                    res.status(200).send(response);
                  });
            });
@@ -58,7 +59,7 @@ module.exports = {
 var sendMessage = function(config,message,wkid,res,next){
   if (config.debug) {
       console.log("--- Connect to Watson Conversation named: " + config.conversation.conversationId);
-      console.log(">>> "+JSON.stringify(message,null,2));
+      console.log(" To Advisor >>> "+JSON.stringify(message,null,2));
   }
   if (message.context.conversation_id === undefined) {
       message.context["conversation_id"]=config.conversation.conversationId;

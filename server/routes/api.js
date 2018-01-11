@@ -30,7 +30,7 @@ module.exports = function(app,config) {
       if(!req.body){
         res.status(400).send({error:'no post body'});
       } else {
-          conversation.advisor(config,req,res);
+          conversation.chatWithMe(config,req,res);
         }
   });
 
