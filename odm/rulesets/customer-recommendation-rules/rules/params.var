@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>params</name>
+  <uuid>5ee1ad8b-889e-479e-85cd-c4fe3bfec61e</uuid>
+  <variables name="customer" type="com.ibm.cloud.refarch.wcs.model.Customer" initialValue="" verbalization="customer"/>
+  <variables name="recommendation" type="com.ibm.cloud.refarch.wcs.model.Recommendation" initialValue="" verbalization="recommendation"/>
+  <variables name="availability" type="com.ibm.cloud.refarch.wcs.model.Availability" initialValue="" verbalization="availability"/>
+</ilog.rules.studio.model.base:VariableSet>

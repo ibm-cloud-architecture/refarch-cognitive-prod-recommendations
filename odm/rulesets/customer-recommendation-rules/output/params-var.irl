@@ -1,0 +1,5 @@
+variables {
+  com.ibm.cloud.refarch.wcs.model.Availability availability;
+  com.ibm.cloud.refarch.wcs.model.Customer customer;
+  com.ibm.cloud.refarch.wcs.model.Recommendation recommendation;
+}

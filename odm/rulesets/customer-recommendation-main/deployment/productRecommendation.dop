@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.rules.studio.model.decisionservice:Operation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" xmlns:ilog.rules.studio.model.query.extractor="http://ilog.rules.studio/model/query/extractor.ecore" rulesetName="InternetProductRecommendation" usingRuleflow="true" ruleflowName="recommendation" targetRuleProjectName="customer-recommendation-main">
+  <name>productRecommendation</name>
+  <uuid>9cdcfff0-c0ea-45c0-a0a8-1c26d2281fd9</uuid>
+  <referencedVariables variableName="customer" variableSetName="params">
+    <variableSet href="../../customer-recommendation-rules/rules/params.var#5ee1ad8b-889e-479e-85cd-c4fe3bfec61e"/>
+  </referencedVariables>
+  <referencedVariables variableName="recommendation" variableSetName="params" direction="OUT">
+    <variableSet href="../../customer-recommendation-rules/rules/params.var#5ee1ad8b-889e-479e-85cd-c4fe3bfec61e"/>
+  </referencedVariables>
+  <ruleflow href="../../customer-recommendation-rules/rules/recommendation.rfl#5dd6528b-fabf-4f6c-9f53-ece779afc545"/>
+  <extractor xsi:type="ilog.rules.studio.model.query.extractor:QueryExtractor" name="productRecommendation_extractor" validator="Default Validator"/>
+  <targetRuleProject href="../../customer-recommendation-main#598277f3-84eb-4e1b-9805-054bab108c73"/>
+</com.ibm.rules.studio.model.decisionservice:Operation>

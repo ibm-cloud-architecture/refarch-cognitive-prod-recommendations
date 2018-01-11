@@ -1,0 +1,56 @@
+import com.ibm.cloud.refarch.wcs.model.*;
+use customer;
+use availability;
+
+
+flowtask recommendation {
+  property mainflowtask = false;
+  property ilog.rules.business_name = "recommendation";
+  property ilog.rules.package_name = "";
+  initialaction {
+    availability = new Availability();
+    availability.zipCode = customer.newZipCode;
+    recommendation = new Recommendation();
+    recommendation.customerId = customer.id;
+
+  };
+  body {
+    recommendation#product_availability;
+    recommendation#customer_profiling;
+    recommendation#product_recommendation;
+  }
+};
+
+ruletask recommendation#product_availability {
+  property ilog.rules.business_name = "recommendation>product availability";
+  property ilog.rules.package_name = "";
+  algorithm = sequential;
+  property ilog.rules.engine.sequential.fastpath = true;
+  ordering = sorted;
+  body {
+    product_availability.*
+  }
+};
+
+ruletask recommendation#customer_profiling {
+  property ilog.rules.business_name = "recommendation>customer profiling";
+  property ilog.rules.package_name = "";
+  algorithm = sequential;
+  property ilog.rules.engine.sequential.fastpath = true;
+  ordering = sorted;
+  body {
+    customer_profiling.*
+  }
+};
+
+ruletask recommendation#product_recommendation {
+  property ilog.rules.business_name = "recommendation>product recommendation";
+  property ilog.rules.package_name = "";
+  algorithm = sequential;
+  property ilog.rules.engine.sequential.fastpath = true;
+  ordering = sorted;
+  body {
+    product_recommendation.*
+  }
+};
+
