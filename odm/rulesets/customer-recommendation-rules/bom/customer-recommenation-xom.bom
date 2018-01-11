@@ -16,12 +16,24 @@ public class Availability
 public class Customer
 {
     public int age;
+    public boolean carOwner;
+    public int children;
+    public string churn;
+    public string emailAddress;
+    public int estimatedIncome;
     public com.ibm.cloud.refarch.wcs.model.Product existingProduct;
+    public string firstName;
+    public string gender;
     public string id;
+    public string lastName;
+    public string maritalStatus;
     public string name;
     public string newZipCode;
     public string previousZipCode;
+    public string profession;
     public com.ibm.cloud.refarch.wcs.model.CustomerProfile profile;
+    public string status;
+    public string type;
     public Customer();
 }
 
