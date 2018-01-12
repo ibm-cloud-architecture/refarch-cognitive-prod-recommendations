@@ -3,7 +3,7 @@
 # compiled output
 /dist
 /tmp
-
+/odm/xom/**/bin
 
 # dependencies
 /node_modules

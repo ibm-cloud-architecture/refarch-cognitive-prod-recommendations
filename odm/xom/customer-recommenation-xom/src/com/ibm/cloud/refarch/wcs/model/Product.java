@@ -1,6 +1,7 @@
 package com.ibm.cloud.refarch.wcs.model;
 
 public class Product {
+	private String name;
 	private String packageName;
 	private String productCategory;
 	private int monthlyUsage;
@@ -61,6 +62,14 @@ public class Product {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 /**	

@@ -23,6 +23,7 @@ public class Customer {
 	
 	private Product existingProduct;
 	private CustomerProfile profile;
+	
 	public String getId() {
 		return id;
 	}
