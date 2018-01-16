@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 IBM Corp. All Rights Reserved.
+ * Copyright 2018 IBM Corp. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ module.exports=  {
   The wcsresponse is the Conversation response. ODM will use its variables set in the context, plus extra data to take a decision.
   ODM output will be added to the Conversation context as well.
   */
-  recommend : function(config,wcsresponse,response,next){
+  recommend : function(config,wcscontext,response,next){
     // Config for the POST to the ODM Rule Execution Server
     var options = {
       protocol: "https:",
@@ -41,6 +41,7 @@ module.exports=  {
     }
 	if (config.debug) {
 		console.log("Options: " + JSON.stringify(options));
+    console.log("Response from WCS to handle: " + JSON.stringify(wcscontext));
 	}
 
 	var req = http.request(options, function(res) {
@@ -48,24 +49,27 @@ module.exports=  {
 			console.log('STATUS: ' + res.statusCode);
 			console.log('HEADERS: ' + JSON.stringify(res.headers));
 		}
-		res.setEncoding('utf8');
-		// the 'data' event is sent when the server responds with a data chunk.
-		// This is where we grab this data - which is the Decision output -
-		// and add it back to the Watson Conversation context
-		res.on('data', function (chunk) {
-  			if (config.debug) {
-      			console.log('Received from ODM: ' + chunk);
-      	}
-      	next(addODMOutputToWCSReponse(wcsresponse, JSON.parse(chunk)));
-		});
-	});
+    if (res.statusCode === 200){
+    		res.setEncoding('utf8');
+    		// the 'data' event is sent when the server responds with a data chunk.
+    		// This is where we grab this data - which is the Decision output -
+    		// and add it back to the Watson Conversation context
+    		res.on('data', function (chunk) {
+      			if (config.debug) {
+          			console.log('Received from ODM: ' + chunk);
+          	}
+            Object.assign(wcscontext,JSON.parse(chunk));
+            next(wcscontext);
+    		 });
+    	} else {
+        console.log('Problem with Recommendation  from ODM: ' + res.statusCode);
+        next(wcscontext);
+      }
+      });
 
-	req.on('error', function(e) {
-		console.log('problem with request: ' + e.message);
-	});
 
 	// uploads the ODM input data in the POST call
-  prepareODMInputData(config,wcsresponse, function(data){
+  prepareODMInputData(config,wcscontext, function(data){
     req.write(data);
     req.end();
   });
@@ -83,10 +87,10 @@ module.exports=  {
 // - the context part of the Watson Conversation response. This is where data that has been gathered
 //   by the bot during the conversation are stored, and the Decision Services may rely on some of these
 // data to take decision
-var prepareODMInputData = function(config,wcsresponse,next) {
-  crmClient.getUserProfile(config,wcsresponse.context.user, function(data) {
-      wcsresponse.context["Customer"]=data;
-      var contextJSON = JSON.stringify(wcsresponse.context);
+var prepareODMInputData = function(config,wcscontext,next) {
+  crmClient.getUserProfile(config,wcscontext.user, function(data) {
+      wcscontext["Customer"]=data;
+      var contextJSON = JSON.stringify(wcscontext);
       // for ODM just send the context
       if (config.debug) {
         console.log('Sending data: ' +contextJSON);
@@ -95,9 +99,3 @@ var prepareODMInputData = function(config,wcsresponse,next) {
    }
   )
 } // prepareODMInputData
-
-var addODMOutputToWCSReponse = function(wcsresponse, odmOutput) {
-  wcsresponse.context["__DecisionID__"]=odmOutput["__DecisionID__"];
-  wcsresponse.context["Recommendation"]=odmOutput["Recommendation"];
-	return wcsresponse;
-} // addODMOutputToWCSReponse

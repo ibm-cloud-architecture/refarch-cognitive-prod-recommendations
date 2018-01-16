@@ -12,7 +12,7 @@
   height: calc(100vh - 200px);
   max-height: 600px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .message-box {

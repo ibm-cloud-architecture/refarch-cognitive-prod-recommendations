@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 IBM Corp. All Rights Reserved.
+ * Copyright 2018 IBM Corp. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,8 @@
  * limitations under the License.
  */
  /**
- Delegate to CRM API
+ Delegate to CRM API. Here is is just a mockup from now.
+ Update 01/15/2018
  */
 
 // mockup of the customer data source
