@@ -24,7 +24,7 @@
         </mat-form-field>
      </div>
      <div class="conversation-container">
-        <div class="scrolling-box">
+        <div  #scrollMe class="scrolling-box">
           <div *ngFor="let p of currentDialog">
              <div class="message-box">
                <div class="{{p.direction}}">
