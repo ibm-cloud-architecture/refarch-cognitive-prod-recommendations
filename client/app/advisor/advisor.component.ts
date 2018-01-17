@@ -30,7 +30,7 @@ Support the dialog with human
 export class AdvisorComponent  implements OnInit, AfterViewChecked {
   currentDialog : Sentence[]=[];
   context:any={};
-  customers = [  {value: 'young', viewValue: 'Studiant'},
+  customers = [  {value: 'young', viewValue: 'Student'},
                  {value: 'retiree', viewValue: 'Retiree'},
                  {value: 'adult', viewValue: 'Standard'},
                  {value: 'noFiber', viewValue: 'NoFiber'}
