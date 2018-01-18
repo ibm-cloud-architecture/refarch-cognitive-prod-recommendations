@@ -85,22 +85,22 @@ var sendMessage = function(config,message,wkid,res,next){
           function(err, response) {
             if (err) {
               console.log('error:', err);
-              next(config,res,{'Error': "Communication error with Watson Service. Please contact your administrator"});
+              resolve({'Error': "Communication error with Watson Service. Please contact your administrator"});
             } else {
-              if (config.conversation.usePersistence) {
-                  response.context.persistId=message.context.persistId;
-                  response.context.revId=message.context.revId;
-                  persist.saveConversation(config,response,function(persistRep){
-                        response.context.persistId=persistRep.id;
-                        response.context.revId=persistRep.rev;
-                        console.log("Conversation persisted, response is now: "+JSON.stringify(response,null,2));
-                        resolve(response);
-                  });
-              } else {
-                  resolve( response);
-              }
-            }
+                  if (config.conversation.usePersistence) {
+                      response.context.persistId=message.context.persistId;
+                      response.context.revId=message.context.revId;
+                      persist.saveConversation(config,response,function(persistRep){
+                            response.context.persistId=persistRep.id;
+                            response.context.revId=persistRep.rev;
+                            console.log("Conversation persisted, response is now: "+JSON.stringify(response,null,2));
+                            resolve(response);
+                      });
+                  } else {
+                      resolve( response);
+                  }
+             }
           }
         );
-    })
+    }
 } // sendMessage
