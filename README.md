@@ -25,15 +25,23 @@ In summary, follow those steps:
 1. Clone this repository, you will get the broker code, the source for the Watson Conversation workspace and the ODM Decision Composer project
   * WCS workspace in [that reference repository](wcs-workspace/Complex-Relocation-workspace.json)
   * ODM Decision Composer project in [that reference repository](odm/Network_subscription_recommendation.dproject)
-1. Create an instance of the Watson Conversation service in your IBM Cloud space, [log into WCS](https://watson-conversation.ng.bluemix.net/), and import the project from the file `wcs-workspace/Complex-Relocation-workspace.json`, then click on the View Details menu to display the workspace ID, and copy it to the clipboard:
-![](docs/wcs_id.png)  
+
+1. Create an instance of the Watson Conversation service in your IBM Cloud space, [log into WCS](https://watson-conversation.ng.bluemix.net/), and import the project from the file `wcs-workspace/Complex-Relocation-workspace.json`, then click on the View Details menu to display the workspace ID, and copy it to the clipboard:  
+
+ ![](docs/wcs_id.png)  
+
 1. Edit the [the config.json](server/config/config.json) and paste the `WorkspaceId` as the value for the `conversation.workspace` field. While in this file, also set the credentials correctly. You can generate credentials for access to your instance of WCS and view them from the _Service Credentials_ page of your service, as show here:
-![](docs/wcs_credentials.png)
-With these steps done, the broker will now be able to access you own instance of the WCS service, invoking your own copy of the conversation project.
+
+ ![](docs/wcs_credentials.png)
+
+ With these steps done, the broker will now be able to access you own instance of the WCS service, invoking your own copy of the conversation project.
 
 1. In IBM Cloud, create an instance of the Business Rule Service: Using the `Catalog > Application Services > Business Rules`. Select the `Connection Settings` tab to open the Rule Execution Server console by clicking the Open Console link (highlighted below) and supplying the credentials 'resAdmin / your password'.
+
   ![](docs/br4bmx_credentials.png)  
-  Using the About dialog box, verify that your version number is at least *8.9.1.0* IFix 10, as shown below. If you already had an instance of the Business Rule Service and its older than that, it will not work with Decision Composer.
+
+  Using the About dialog box, verify that your version number is at least *8.9.1.0* IFix 10, as shown below. If you already had an instance of the Business Rule Service and its older than that, it will not work with Decision Composer.  
+
   ![](docs/br4bmx_version.png)  
 
 1. Get service connection parameters: go back to the `Connection Settings` page of the Business Rules service on IBM Cloud, and use the information in the bottom section to update your `config.json` file with the correct `odm.hostname` and `odm.authtoken` (at the bottom of the page, under the label "Basic Auth").
@@ -47,7 +55,8 @@ With these steps done, the broker will now be able to access you own instance of
 ```
 
 1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) import the _Network_subscription_recommendation_ project and examine it. You can `Test` it within Decision Composer, sample input data is provided. The following screen shot illustrates the a customer, named 'Young' and the output from the rule execution, recommending a Fiber subscription at 25$.  
-![](docs/decision-comp-test.png)
+
+ ![](docs/decision-comp-test.png)
 
 1. Deploy rules to decision service: from the Home page of `Decision Composer`, click on the project's menu (three vertical dots) and use the `Deploy` choice deploy the decision definition to the Business Rules Service instance you've created earlier. This will be needed for runtime execution. The created path for the RuleApp and ruleset is `/Networksubscriptionrecommendation_RuleApp/Networksubscriptionrecommendation/`. This path needs to be added to the `config.json`.
 
@@ -55,23 +64,29 @@ With these steps done, the broker will now be able to access you own instance of
 * Go back to the root of the repository, execute the following commands to get node packages dependencies, build the angular 4 front end, and start the web server:
 ```
 npm install
-npm run dev build
+npm run dev
 ```
-* Point your browser to `http://localhost:3001`, select the `Support Bot` the advisor will display the chat panel:
+* Point your browser to `http://localhost:3001`, select the `Support Bot` the advisor will display the chat panel:  
+
 ![](docs/advisor_1.png)  
+
 The 'select' widget is for demonstration to select one of the predefined customer.
 
 ## Watson Conversation Logic
 For deep dive tutorial on Watson Conversation see [this documentation](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support). Ib this implementation there is one intent to assess the relocation question. One entity to define the potential subscription a customer may have. The values for this entities could come from a MDM reference data. The dialog flow is simple with one main node to process the relocation request.
+
 ![](docs/dialog_flow.png)   
 
 The node uses slots with the predefined system entities of date and number, and ask related questions if they were not identified.
+
 ![](docs/dialog_slots.png)
 
 The response part is using the context object to set an action variable that will be used by the conversation broker code to propagate the conversation context to ODM for the rule processing:
-![](docs/recommend_actions.png)
+
+![](docs/recommend_action.png)
 
 Finally when the recommendation comes back from ODM, it is a new object in the context. So it is easy in a child node to build an appropriate message.
+
 ![](docs/recomm_msg.png)
 
 We use this approach to keep the conversation inside WCS. It will be possible to build the response directly inside the rules and the conversation broker will present directly the response from ODM to the end user.  
@@ -85,12 +100,14 @@ The project decides what product to recommend based on two input data: the Zipco
 * _Subscription by zip code_ computes which service is available at the destination address. In this case, we've simply captured this information in a simple decision table.
 * _Determine category_ is establishing the customer profile based on its data. Here we're simply classifying the customers in 3 groups: Student, Adult, Retiree, which are used in the final decision.
 
-The main decision, _Recommendation_ is implemented by a Decision Table: Each row is a rule, light grey columns are conditions on data, and darker grey columns are action, setting the type of product and price tag:
+The main decision, _Recommendation_ is implemented by a Decision Table: Each row is a rule, light grey columns are conditions on data, and darker grey columns are action, setting the type of product and price tag:  
+
 ![](docs/dcomp_2.png)
 
 which is built to suggest Adult and Students to upgrade to Fiber access (if available), while giving a discount to Students and Retired.
 
-Once deployed to the business rule service the decision is a ruleset in the ODM Business rule services as illustrated in the screen shot below
+Once deployed to the business rule service the decision is a ruleset in the ODM Business rule services as illustrated in the screen shot below:
+
 ![](docs/deployed-rs.png)
 
 ## Code explanation
