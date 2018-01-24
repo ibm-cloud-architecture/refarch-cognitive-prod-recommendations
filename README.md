@@ -98,21 +98,21 @@ A Decision Project is composed of three parts:
 * the *Decision Model* is a dependency graph used to decompose the main decision to be taken into sub-decisions and input data.
 * the *Decision Logic* are the rules and decision tables implementing each decision (or sub-decision), in a format and language suitable for business user: close to natural language, yet formal enough that it can be compiled into executable form.
 
-Looking further at the Decision Model for this project, represented in the following diagram, one can see that the product `recommendation` is the top decision:
+Looking further at the Decision Model for this project, represented in the following diagram, one can see that the product `recommendation` is the top decision (decisions represented by blue rectangles)
 
 ![](docs/dcomp_1.png)
 
-The project decides what product to recommend based on two input data: the Zipcode the customer wants to move to, and the Customer record itself. It is composed of two sub-decisions:
+The project decides what product to recommend based on two input data (green rounded shapes): the Zipcode the customer wants to move to, and the Customer record itself. It is composed of two sub-decisions:
 * _Subscription by zip code_ computes which service is available at the destination address. In this case, we've simply captured this information in a simple decision table.
 * _Determine category_ is establishing the customer profile based on its data. Here we're simply classifying the customers in 3 groups: Student, Adult, Retiree, which are used in the final decision.
 
-The *Decision Logic* of main decision (_Recommendation_) implement it using a Decision Table: Each row is a rule, light grey columns are conditions on data, and darker grey columns are action, setting the type of product and price tag:  
+The *Decision Logic* of main decision (_Recommendation_) implements it using a Decision Table: Each row is a rule, light grey columns are conditions on data, and darker grey columns are actions, setting the type of product and price tag:  
 
 ![](docs/dcomp_2.png)
 
 which is built to suggest Adult and Students to upgrade to Fiber access (if available), while giving a discount to Students and Retired.
 
-Once deployed to the business rule service the decision is a ruleset in the ODM Business rule services as illustrated in the screen shot below:
+Once deployed to the business rule service the decision is a ruleset in the ODM Business rule services as illustrated in the screen shot below. It can thus be invoked through various means, including a REST call, like any other ODM Decision Service.
 
 ![](docs/deployed-rs.png)
 
