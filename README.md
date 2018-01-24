@@ -73,7 +73,7 @@ npm run dev
 The 'select' widget is for demonstration to select one of the predefined customer.
 
 ## Watson Conversation Logic
-For deep dive tutorial on Watson Conversation see [this documentation](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support). Ib this implementation there is one intent to assess the relocation question. One entity to define the potential subscription a customer may have. The values for this entities could come from a MDM reference data. The dialog flow is simple with one main node to process the relocation request.
+For deep dive tutorial on Watson Conversation see [this documentation](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support). In this implementation there is one intent to assess the relocation question. One entity to define the potential subscription a customer may have. The values for this entities could come from a MDM reference data. The dialog flow is simple with one main node to process the relocation request.
 
 ![](docs/dialog_flow.png)   
 
@@ -92,7 +92,13 @@ Finally when the recommendation comes back from ODM, it is a new object in the c
 We use this approach to keep the conversation inside WCS. It will be possible to build the response directly inside the rules and the conversation broker will present directly the response from ODM to the end user.  
 
 ## ODM Decision Composer project
-Using Decision Composer, business users can define the decision logic to support a decision point in a business process. They defines the data model for the deployable decision service. The following diagram shows that the product `recommendation` is the top decision, and user can define the decision logic using a graph:
+Using Decision Composer, business users can model the decision to be taken at a certain point during a business process, or during the flow of a conversation.
+A Decision Project is composed of three parts:
+* the *Data Model* contains the classes and attributes of the data elements which are used within the decision, including for representing its input and output data.
+* the *Decision Model* is a dependency graph used to decompose the main decision to be taken into sub-decisions and input data.
+* the *Decision Logic* are the rules and decision tables implementing each decision (or sub-decision), in a format and language suitable for business user: close to natural language, yet formal enough that it can be compiled into executable form.
+
+Looking further at the Decision Model for this project, represented in the following diagram, one can see that the product `recommendation` is the top decision:
 
 ![](docs/dcomp_1.png)
 
@@ -100,7 +106,7 @@ The project decides what product to recommend based on two input data: the Zipco
 * _Subscription by zip code_ computes which service is available at the destination address. In this case, we've simply captured this information in a simple decision table.
 * _Determine category_ is establishing the customer profile based on its data. Here we're simply classifying the customers in 3 groups: Student, Adult, Retiree, which are used in the final decision.
 
-The main decision, _Recommendation_ is implemented by a Decision Table: Each row is a rule, light grey columns are conditions on data, and darker grey columns are action, setting the type of product and price tag:  
+The *Decision Logic* of main decision (_Recommendation_) implement it using a Decision Table: Each row is a rule, light grey columns are conditions on data, and darker grey columns are action, setting the type of product and price tag:  
 
 ![](docs/dcomp_2.png)
 
