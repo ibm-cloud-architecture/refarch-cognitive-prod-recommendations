@@ -102,5 +102,5 @@ var sendMessage = function(config,message,wkid,res,next){
              }
           }
         );
-    }
+    });
 } // sendMessage
