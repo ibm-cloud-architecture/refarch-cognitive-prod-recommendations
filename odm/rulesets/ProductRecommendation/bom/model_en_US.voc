@@ -1,0 +1,92 @@
+# Vocabulary Properties
+uuid = c5d01e5b-bcd7-445a-a529-c303222aa0a2
+
+# com.ibm.cloud.refarch.wcs.model.Availability
+com.ibm.cloud.refarch.wcs.model.Availability#concept.label = availability
+com.ibm.cloud.refarch.wcs.model.Availability.addProductCategories(java.lang.String)#phrase.action = add {0} to the product categories of {this}
+com.ibm.cloud.refarch.wcs.model.Availability.addToProductCategories(java.lang.String)#phrase.action = add {0} to the product categories of {this}
+com.ibm.cloud.refarch.wcs.model.Availability.productCategories#phrase.action = set the product categories of {this} to {product category}
+com.ibm.cloud.refarch.wcs.model.Availability.productCategories#phrase.navigation = {product category} of {this}
+com.ibm.cloud.refarch.wcs.model.Availability.removeFromProductCategories(java.lang.String)#phrase.action = remove {0} from the product categories of {this}
+com.ibm.cloud.refarch.wcs.model.Availability.zipCode#phrase.action = set the zip code of {this} to {zip code}
+com.ibm.cloud.refarch.wcs.model.Availability.zipCode#phrase.navigation = {zip code} of {this}
+
+# com.ibm.cloud.refarch.wcs.model.Customer
+com.ibm.cloud.refarch.wcs.model.Customer#concept.label = customer
+com.ibm.cloud.refarch.wcs.model.Customer.age#phrase.action = set the age of {this} to {age}
+com.ibm.cloud.refarch.wcs.model.Customer.age#phrase.navigation = {age} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.carOwner#phrase.action = make it {car owner} that {this} is car owner
+com.ibm.cloud.refarch.wcs.model.Customer.carOwner#phrase.navigation = {this} is car owner
+com.ibm.cloud.refarch.wcs.model.Customer.children#phrase.action = set the children of {this} to {children}
+com.ibm.cloud.refarch.wcs.model.Customer.children#phrase.navigation = {children} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.churn#phrase.action = set the churn of {this} to {churn}
+com.ibm.cloud.refarch.wcs.model.Customer.churn#phrase.navigation = {churn} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.emailAddress#phrase.action = set the email address of {this} to {email address}
+com.ibm.cloud.refarch.wcs.model.Customer.emailAddress#phrase.navigation = {email address} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.estimatedIncome#phrase.action = set the estimated income of {this} to {estimated income}
+com.ibm.cloud.refarch.wcs.model.Customer.estimatedIncome#phrase.navigation = {estimated income} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.existingProduct#phrase.action = set the existing product of {this} to {existing product}
+com.ibm.cloud.refarch.wcs.model.Customer.existingProduct#phrase.navigation = {existing product} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.firstName#phrase.action = set the first name of {this} to {first name}
+com.ibm.cloud.refarch.wcs.model.Customer.firstName#phrase.navigation = {first name} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.gender#phrase.action = set the gender of {this} to {gender}
+com.ibm.cloud.refarch.wcs.model.Customer.gender#phrase.navigation = {gender} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.id#phrase.action = set the id of {this} to {id}
+com.ibm.cloud.refarch.wcs.model.Customer.id#phrase.navigation = {id} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.lastName#phrase.action = set the last name of {this} to {last name}
+com.ibm.cloud.refarch.wcs.model.Customer.lastName#phrase.navigation = {last name} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.maritalStatus#phrase.action = set the marital status of {this} to {marital status}
+com.ibm.cloud.refarch.wcs.model.Customer.maritalStatus#phrase.navigation = {marital status} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.name#phrase.action = set the name of {this} to {name}
+com.ibm.cloud.refarch.wcs.model.Customer.name#phrase.navigation = {name} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.newZipCode#phrase.action = set the new zip code of {this} to {new zip code}
+com.ibm.cloud.refarch.wcs.model.Customer.newZipCode#phrase.navigation = {new zip code} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.previousZipCode#phrase.action = set the previous zip code of {this} to {previous zip code}
+com.ibm.cloud.refarch.wcs.model.Customer.previousZipCode#phrase.navigation = {previous zip code} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.profession#phrase.action = set the profession of {this} to {profession}
+com.ibm.cloud.refarch.wcs.model.Customer.profession#phrase.navigation = {profession} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.profile#phrase.action = set the profile of {this} to {profile}
+com.ibm.cloud.refarch.wcs.model.Customer.profile#phrase.navigation = {profile} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.status#phrase.action = set the status of {this} to {status}
+com.ibm.cloud.refarch.wcs.model.Customer.status#phrase.navigation = {status} of {this}
+com.ibm.cloud.refarch.wcs.model.Customer.type#phrase.action = set the type of {this} to {type}
+com.ibm.cloud.refarch.wcs.model.Customer.type#phrase.navigation = {type} of {this}
+
+# com.ibm.cloud.refarch.wcs.model.CustomerProfile
+com.ibm.cloud.refarch.wcs.model.CustomerProfile#concept.label = customer profile
+com.ibm.cloud.refarch.wcs.model.CustomerProfile.Adult#instance.label = Adult
+com.ibm.cloud.refarch.wcs.model.CustomerProfile.Retired#instance.label = Retired
+com.ibm.cloud.refarch.wcs.model.CustomerProfile.Student#instance.label = Student
+com.ibm.cloud.refarch.wcs.model.CustomerProfile.ageGrouping#phrase.action = set the age grouping of {this} to {age grouping}
+com.ibm.cloud.refarch.wcs.model.CustomerProfile.ageGrouping#phrase.navigation = {age grouping} of {this}
+com.ibm.cloud.refarch.wcs.model.CustomerProfile.incomeGrouping#phrase.action = set the income grouping of {this} to {income grouping}
+com.ibm.cloud.refarch.wcs.model.CustomerProfile.incomeGrouping#phrase.navigation = {income grouping} of {this}
+com.ibm.cloud.refarch.wcs.model.CustomerProfile.name#phrase.action = set the name of {this} to {name}
+com.ibm.cloud.refarch.wcs.model.CustomerProfile.name#phrase.navigation = {name} of {this}
+
+# com.ibm.cloud.refarch.wcs.model.Product
+com.ibm.cloud.refarch.wcs.model.Product#concept.label = product
+com.ibm.cloud.refarch.wcs.model.Product.ADSL#instance.label = ADSL
+com.ibm.cloud.refarch.wcs.model.Product.FIBRE25#instance.label = FIBRE25
+com.ibm.cloud.refarch.wcs.model.Product.FIBRE30#instance.label = FIBRE30
+com.ibm.cloud.refarch.wcs.model.Product.downloadSpeed#phrase.action = set the download speed of {this} to {download speed}
+com.ibm.cloud.refarch.wcs.model.Product.downloadSpeed#phrase.navigation = {download speed} of {this}
+com.ibm.cloud.refarch.wcs.model.Product.monthlyUsage#phrase.action = set the monthly usage of {this} to {monthly usage}
+com.ibm.cloud.refarch.wcs.model.Product.monthlyUsage#phrase.navigation = {monthly usage} of {this}
+com.ibm.cloud.refarch.wcs.model.Product.name#phrase.action = set the name of {this} to {name}
+com.ibm.cloud.refarch.wcs.model.Product.name#phrase.navigation = {name} of {this}
+com.ibm.cloud.refarch.wcs.model.Product.packageName#phrase.action = set the package name of {this} to {package name}
+com.ibm.cloud.refarch.wcs.model.Product.packageName#phrase.navigation = {package name} of {this}
+com.ibm.cloud.refarch.wcs.model.Product.price#phrase.action = set the price of {this} to {price}
+com.ibm.cloud.refarch.wcs.model.Product.price#phrase.navigation = {price} of {this}
+com.ibm.cloud.refarch.wcs.model.Product.productCategory#phrase.action = set the product category of {this} to {product category}
+com.ibm.cloud.refarch.wcs.model.Product.productCategory#phrase.navigation = {product category} of {this}
+
+# com.ibm.cloud.refarch.wcs.model.Recommendation
+com.ibm.cloud.refarch.wcs.model.Recommendation#concept.label = recommendation
+com.ibm.cloud.refarch.wcs.model.Recommendation.bestRecommended1st#phrase.action = set the best recommended1st of {this} to {best recommended1st}
+com.ibm.cloud.refarch.wcs.model.Recommendation.bestRecommended1st#phrase.navigation = {best recommended1st} of {this}
+com.ibm.cloud.refarch.wcs.model.Recommendation.bestRecommended2nd#phrase.action = set the best recommended2nd of {this} to {best recommended2nd}
+com.ibm.cloud.refarch.wcs.model.Recommendation.bestRecommended2nd#phrase.navigation = {best recommended2nd} of {this}
+com.ibm.cloud.refarch.wcs.model.Recommendation.customerId#phrase.action = set the customer id of {this} to {customer id}
+com.ibm.cloud.refarch.wcs.model.Recommendation.customerId#phrase.navigation = {customer id} of {this}
