@@ -9,7 +9,7 @@
     <entries xsi:type="ilog.rules.studio.model.xom:SystemXOMPathEntry" name="customer-recommendation-xom" url="platform:/customer-recommendation-xom" kind="JAVA_PROJECT" exported="true"/>
   </paths>
   <paths xsi:type="ilog.rules.studio.model.bom:BOMPath" pathID="BOM">
-    <entries xsi:type="ilog.rules.studio.model.bom:BOMEntry" name="model" url="platform:/ProductRecommendation/bom/model.bom" origin="xom:/ProductRecommendation//customer-recommenation-xom"/>
+    <entries xsi:type="ilog.rules.studio.model.bom:BOMEntry" name="model" url="platform:/ProductRecommendation/bom/model.bom" origin="xom:/ProductRecommendation//customer-recommendation-xom"/>
   </paths>
   <modelFolders xsi:type="ilog.rules.studio.model.base:SourceFolder">
     <name>rules</name>

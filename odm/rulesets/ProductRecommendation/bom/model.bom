@@ -1,6 +1,6 @@
 
 property loadGetterSetterAsProperties "true"
-property origin "xom:/ProductRecommendation//customer-recommenation-xom"
+property origin "xom:/ProductRecommendation//customer-recommendation-xom"
 property uuid "657ab930-99cb-46a1-b08a-8c89ffcf377f"
 package com.ibm.cloud.refarch.wcs.model;
 
