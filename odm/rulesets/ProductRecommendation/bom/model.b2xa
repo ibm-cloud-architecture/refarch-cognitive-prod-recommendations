@@ -1,0 +1,21 @@
+<b2x:translation xmlns:b2x="http://schemas.ilog.com/JRules/1.3/Translation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.ilog.com/JRules/1.3/Translation ilog/rules/schemas/1_3/b2x.xsd">
+    <id>2e1022c4-e9b1-4a14-a84c-427f6630b24f</id>
+    <lang>ARL</lang>
+    <class>
+        <businessName>com.ibm.cloud.refarch.wcs.model.Availability</businessName>
+        <method>
+            <name>addToProductCategories</name>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            this.productCategories.add(argument);
+            ]]></body>
+        </method>
+        <method>
+            <name>removeFromProductCategories</name>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            this.productCategories.remove(argument);
+            ]]></body>
+        </method>
+    </class>
+</b2x:translation>
