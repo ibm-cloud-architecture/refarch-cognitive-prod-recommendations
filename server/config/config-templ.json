@@ -16,5 +16,7 @@
       "path": "/DecisionService/rest/v1/Networksubscriptionrecommendation_RuleApp/Networksubscriptionrecommendation",
       "authtoken":"Basic ...."
     },
-    "debug":true
+    "debug":true,
+    "port": 3001,
+    "version": "v0.0.3"
 }
