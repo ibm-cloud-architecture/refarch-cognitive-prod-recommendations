@@ -1,6 +1,6 @@
-# Product Recommendations with Watson Conversation and Decision Management
+# Product Recommendations with Watson Assistant and Decision Management
 
-This project demonstrates how to leverage Watson Conversation to gather information about the customer intent, and propose the best product recommendations from his profile and the set of answers / facts gathered during the conversation.
+This project demonstrates how to leverage Watson Assistant to gather information about the customer intent, and propose the best product recommendations from his profile and the set of answers / facts gathered during the conversation.
 
 This project is part of the **IBM Cognitive Reference Architecture** compute model available at https://github.com/ibm-cloud-architecture/refarch-cognitive.
 
@@ -9,9 +9,9 @@ The current project is supporting the following architecture:
 
 ![](docs/pr-odm-wcs.png)
 
-The broker code is managing the interactions with end users via different channels. For demonstration point of view only the web interface is used. The Watson conversation is supporting the natural language understanding with intent classification and entity extraction, and then the dialog flow. ODM decision engine is used for best action and recommendations to be added on top of the conversation. It uses the WCS context to get facts from the dialog done with the end user. To deliver accurate recommendations the broker code needs to enrich the data set for ODM so call to backend system is needed. API management can be added to the API provider so measurement of API usage can be done.
+The broker code is managing the interactions with end users via different channels. For demonstration point of view only the web interface is used. Watson Assistant is supporting the natural language understanding with intent classification and entity extraction, and then the dialog flow. ODM decision engine is used for best action and recommendations to be added on top of the conversation. It uses the Watson Assistant context to get facts from the dialog done with the end user. To deliver accurate recommendations the broker code needs to enrich the data set for ODM so call to backend system is needed. API management can be added to the API provider so measurement of API usage can be done.
 
-From a design and implementation point of view the solution illustrates how to consume a Watson Conversation workspace into [ODM Decision composer](http://ibm.biz/DecisionComposer) to prepare the object model for rule authoring. Use your IBM Cloud credential to connect to Decision Composer.
+From a design and implementation point of view the solution illustrates how to consume a Watson Assistant workspace into [ODM Decision composer](http://ibm.biz/DecisionComposer) to prepare the object model for rule authoring. Use your IBM Cloud credential to connect to Decision Composer.
 
 ## Use Case
 This project shows how a customer could have a dialog with his telco operator when he wants to move. The chatbot will detect the intent to move, and ask questions to get the data of the move and the zipcode of the new address. The idea is to use the date to check if the telco provider can actually provide a transfer of service before the move date. And to check the available services at the destination address, so as to recommend the best product or bundle.
@@ -22,11 +22,11 @@ So the bot gathers the data from the customer, and at a given point of the dialo
 ## Build and run
 The code is a reuse of the conversation broker code detailed in [this project](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker)
 In summary, follow those steps:
-1. Clone this repository, you will get the broker code, the source for the Watson Conversation workspace and the ODM Decision Composer project
-  * WCS workspace in [that reference repository](wcs-workspace/Complex-Relocation-workspace.json)
+1. Clone this repository, you will get the broker code, the source for the Watson Assistant workspace and the ODM Decision Composer project
+  * Watsont Assistant workspace in [that reference repository](wcs-workspace/Complex-Relocation-workspace.json)
   * ODM Decision Composer project in [that reference repository](odm/Network_subscription_recommendation.dproject)
 
-1. Create an instance of the Watson Conversation service in your IBM Cloud space, [log into WCS](https://watson-conversation.ng.bluemix.net/), and import the project from the file `wcs-workspace/Complex-Relocation-workspace.json`, then click on the View Details menu to display the workspace ID, and copy it to the clipboard:  
+1. Create an instance of the Watson Assistant service in your IBM Cloud space, [log into WA](https://watson-assistant.ng.bluemix.net/), and import the project from the file `wcs-workspace/Complex-Relocation-workspace.json`, then click on the View Details menu to display the workspace ID, and copy it to the clipboard:  
 
  ![](docs/wcs_id.png)  
 
@@ -34,7 +34,7 @@ In summary, follow those steps:
 
  ![](docs/wcs_credentials.png)
 
- With these steps done, the broker will now be able to access you own instance of the WCS service, invoking your own copy of the conversation project.
+ With these steps done, the broker will now be able to access you own instance of the WA service, invoking your own copy of the conversation project.
 
 1. In IBM Cloud, create an instance of the Business Rule Service: Using the `Catalog > Application Services > Business Rules`. Select the `Connection Settings` tab to open the Rule Execution Server console by clicking the Open Console link (highlighted below) and supplying the credentials 'resAdmin / your password'.
 
@@ -72,8 +72,8 @@ npm run dev
 
 The 'select' widget is for demonstration to select one of the predefined customer.
 
-## Watson Conversation Logic
-For deep dive tutorial on Watson Conversation see [this documentation](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support). In this implementation there is one intent to assess the relocation question. One entity to define the potential subscription a customer may have. The values for this entities could come from a MDM reference data. The dialog flow is simple with one main node to process the relocation request.
+## Watson Assistant Logic
+For deep dive tutorial on Watson Assistant see [this documentation](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support). In this implementation there is one intent to assess the relocation question. One entity to define the potential subscription a customer may have. The values for this entities could come from a MDM reference data. The dialog flow is simple with one main node to process the relocation request.
 
 ![](docs/dialog_flow.png)   
 
@@ -89,7 +89,7 @@ Finally when the recommendation comes back from ODM, it is a new object in the c
 
 ![](docs/recomm_msg.png)
 
-We use this approach to keep the conversation inside WCS. It will be possible to build the response directly inside the rules and the conversation broker will present directly the response from ODM to the end user.  
+We use this approach to keep the conversation inside WA. It will be possible to build the response directly inside the rules and the conversation broker will present directly the response from ODM to the end user.  
 
 ## ODM Decision Composer project
 Using Decision Composer, business users can model the decision to be taken at a certain point during a business process, or during the flow of a conversation.
@@ -119,9 +119,9 @@ Once deployed to the business rule service the decision is a ruleset in the ODM 
 ## Code explanation
 The two most important points to be noted in the code base are:
 
-* server/routes/features/conversation.js is the code that handle the round-trip with Watson Conversation. It stores the conversation context and sends it back to WCS every time the user enters something in the input textfield. WCS then performs natural language understanding, detects the intent, and where to continue the dialog, and returns an updated context. When this code sees the `recommend` keyword in the "actions" part of the context, it knows its time to call ODM.
+* server/routes/features/conversation.js is the code that handle the round-trip with Watson Assistant. It stores the conversation context and sends it back to WCS every time the user enters something in the input textfield. WCS then performs natural language understanding, detects the intent, and where to continue the dialog, and returns an updated context. When this code sees the `recommend` keyword in the "actions" part of the context, it knows its time to call ODM.
 
-* ODMClient.js handles the call to the ODM Decision Service. It gathers input data by merging the WCS context object and additional external data - in this case a Customer record. Then it invokes the Decision Service through a REST POST on the Business Rule Service instance you've created. Finally, when the output is obtained - the Decision - it adds it back to the Watson Conversation context and recalls the conversation for getting the final message.
+* ODMClient.js handles the call to the ODM Decision Service. It gathers input data by merging the WA context object and additional external data - in this case a Customer record. Then it invokes the Decision Service through a REST POST on the Business Rule Service instance you've created. Finally, when the output is obtained - the Decision - it adds it back to the Watson Assistant context and recalls the conversation for getting the final message.
 
 ```javascripts
 if (response.context.action === "recommend") {
@@ -142,7 +142,7 @@ The data model for the rule execution can be enriched and defined as a Java mode
 
 ## Compendium
 * [Cognitive conversation paper](https://www.ibm.com/devops/method/content/architecture/cognitiveConversationDomain)
-* [Watson Conversation Training](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support)
+* [Watson Assistant Training](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support)
 * [ODM Decision composer](http://ibm.biz/DecisionComposer)
 * [Angular 2 Material](https://material.angular.io/components/categories) used for widget in UI.
 
