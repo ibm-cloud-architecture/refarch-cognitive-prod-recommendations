@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const watson = require('watson-developer-cloud');
+const AssistantV1 = require('watson-developer-cloud/assistant/v1');
 const persist= require('./persist');
 const odmclient = require('./ODMClient');
 
@@ -61,6 +61,12 @@ module.exports = {
 // Private
 // ------------------------------------------------------------
 var sendMessage = function(config,message,wkid,res,next){
+    // Set up Assistant service wrapper.
+    var service = new AssistantV1({
+      username: config.conversation.username,
+      password: config.conversation.password,
+      version: '2018-02-16'
+    });
   return new Promise(function(resolve, reject){
       if (message.context.conversation_id === undefined) {
           message.context["conversation_id"]=config.conversation.conversationId;
@@ -70,13 +76,7 @@ var sendMessage = function(config,message,wkid,res,next){
           console.log(" To Advisor >>> "+JSON.stringify(message,null,2));
       }
 
-      conversation = watson.conversation({
-              username: config.conversation.username,
-              password: config.conversation.password,
-              version: config.conversation.version,
-              version_date: config.conversation.versionDate});
-
-      conversation.message(
+      service.message(
           {
           workspace_id: wkid,
           input: {'text': message.text},
