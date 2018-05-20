@@ -11,10 +11,10 @@
             "url": "https://...-bluemix:...-bluemix.cloudant.com"
     },
     "odm" : {
-      "hostname": "....ng.bluemix.net",
+      "hostname": "decision-composer.mybluemix.net",
       "port": 443,
-      "path": "/DecisionService/rest/v1/Networksubscriptionrecommendation_RuleApp/Networksubscriptionrecommendation",
-      "authtoken":"Basic ...."
+      "path": "/rest/public/v1/execution/PROJECT ID HERE/execute/PROJECT VERSION HERE",
+      "authtoken":"API KEY HERE"
     },
     "debug":true,
     "port": 3001,

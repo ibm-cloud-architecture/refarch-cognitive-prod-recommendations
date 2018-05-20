@@ -13,9 +13,11 @@ The broker code is managing the interactions with end users via different channe
 
 From a design and implementation point of view the solution illustrates how to consume a Watson Assistant workspace into [ODM Decision composer](http://ibm.biz/DecisionComposer) to prepare the object model for rule authoring. Use your IBM Cloud credential to connect to Decision Composer.
 
+*Note*: the Business Rules Service for Bluemix [has been deprecated](https://www.ibm.com/blogs/bluemix/2018/02/deprecating-business-rules-service/), and the code of this demonstration has been adapted to use the new Execution feature within Decision Composer (introduced on May 17th in V0.26). However, should you still want to see how the demonstration was set with the Business Rules Service, then you can do so by going to the [`bluemix-service`](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations/tree/bluemix-service) branch.
+
 ## Use Case
 This project shows how a customer could have a dialog with his telco operator when he wants to move. The chatbot will detect the intent to move, and ask questions to get the data of the move and the zipcode of the new address. The idea is to use the date to check if the telco provider can actually provide a transfer of service before the move date. And to check the available services at the destination address, so as to recommend the best product or bundle.
-So the bot gathers the data from the customer, and at a given point of the dialog, the broker will invoke a Decision Service, implemented with ODM Decision Composer, and executed using IBM Cloud Business rule service.
+So the bot gathers the data from the customer, and at a given point of the dialog, the broker will invoke a Decision Service, implemented with ODM Decision Composer, and executed using Decision Composer execution feature, on IBM Cloud.
 
 ![](docs/advisor_1.png)
 
@@ -36,29 +38,28 @@ In summary, follow those steps:
 
  With these steps done, the broker will now be able to access you own instance of the WA service, invoking your own copy of the conversation project.
 
-1. In IBM Cloud, create an instance of the Business Rule Service: Using the `Catalog > Application Services > Business Rules`. Select the `Connection Settings` tab to open the Rule Execution Server console by clicking the Open Console link (highlighted below) and supplying the credentials 'resAdmin / your password'.
+1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) go to the Settings page:
 
-  ![](docs/br4bmx_credentials.png)  
+ ![](docs/decision-comp-settings.png)
 
-  Using the About dialog box, verify that your version number is at least *8.9.1.0* IFix 10, as shown below. If you already had an instance of the Business Rule Service and its older than that, it will not work with Decision Composer.  
+generate a new API Key and copy it in your clipboard.
 
-  ![](docs/br4bmx_version.png)  
+ ![](docs/decision-comp-api-key.png)
 
-1. Get service connection parameters: go back to the `Connection Settings` page of the Business Rules service on IBM Cloud, and use the information in the bottom section to update your `config.json` file with the correct `odm.hostname` and `odm.authtoken` (at the bottom of the page, under the label "Basic Auth").
-```json
-"odm" : {
-  "hostname": "brsv2-[].ng.bluemix.net",
-  "port": 443,
-  "path": "/DecisionService/rest/v1/Networksubscriptionrecommendation_RuleApp/Networksubscriptionrecommendation",
-  "authtoken":"Basic ..."
-},
-```
+Edit the [the config.json](server/config/config.json) and paste this API key as the value for the `authtoken` field.
 
 1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) import the _Network_subscription_recommendation_ project and examine it. You can `Test` it within Decision Composer, sample input data is provided. The following screen shot illustrates the a customer, named 'Young' and the output from the rule execution, recommending a Fiber subscription at 25$.  
 
  ![](docs/decision-comp-test.png)
 
-1. Deploy rules to decision service: from the Home page of `Decision Composer`, click on the project's menu (three vertical dots) and use the `Deploy` choice deploy the decision definition to the Business Rules Service instance you've created earlier. This will be needed for runtime execution. The created path for the RuleApp and ruleset is `/Networksubscriptionrecommendation_RuleApp/Networksubscriptionrecommendation/`. This path needs to be added to the `config.json`.
+1. Retrieve the REST URL for your decision service: from the Home page of `Decision Composer`, click on the project's menu (three vertical dots) and use the `Execute` choice to display the URL which Decision Composer generates for execution of your project. Take note of the project unique ID and version, and place this information in the [the config.json](server/config/config.json) as shown here:
+
+ ![](docs/decision-comp-execute.png)
+ ![](docs/decision-comp-execute2.png)
+ ![](docs/decision-comp-execute3.png)
+
+You're done! Now when the broker reaches the point in the dialog where a recommendation is needed, it will invoke the execution REST API of Decision Composer to run your project.
+Note that in this demonstration, we have left the version of the project hard-coded in the config file, so if you save the Decision Composer project multiple times, thus changing the revision number, you will have to update the `config.json` file
 
 ### Execute the web app locally.
 * Go back to the root of the repository, execute the following commands to get node packages dependencies, build the angular 4 front end, and start the web server:
