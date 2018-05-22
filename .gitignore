@@ -33,6 +33,7 @@ testem.log
 /typings
 /server/config/config.json
 /helm/casewcsprodrecom/values.yaml
+odm/rulesets/ProductRecommendation/reports/
 
 
 #System Files

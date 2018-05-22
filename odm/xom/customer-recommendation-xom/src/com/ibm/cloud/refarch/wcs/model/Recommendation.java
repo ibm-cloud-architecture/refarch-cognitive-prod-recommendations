@@ -4,6 +4,7 @@ public class Recommendation {
 	private String customerId;
 	private Product bestRecommended1st;
 	private Product bestRecommended2nd;
+	
 	public String getCustomerId() {
 		return customerId;
 	}

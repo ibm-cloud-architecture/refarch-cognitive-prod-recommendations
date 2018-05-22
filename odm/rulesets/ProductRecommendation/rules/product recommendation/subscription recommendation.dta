@@ -4,7 +4,7 @@
   <uuid>ff1b8520-bd24-4749-ade3-fbaa2c573084</uuid>
   <locale>en_US</locale>
   <definition>
-<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+<DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
   <Body>
     <Structure>
       <ConditionDefinitions>
@@ -71,6 +71,33 @@
                 <Condition>
                   <Expression>
                     <Param><![CDATA[Retired]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[ADSL]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["ADSL"]]></Param>
+          </Expression>
+          <Partition DefId="C3">
+            <Condition>
+              <Expression>
+                <Param><![CDATA["ADSL"]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<an object> is one of <objects>]]></Text>
+                    <Param><![CDATA[{ Adult , Student , Retired }]]></Param>
                   </Expression>
                   <ActionSet>
                     <Action DefId="A0">
@@ -212,28 +239,21 @@
             </Action>
           </ActionSet>
         </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
       </Partition>
     </Contents>
   </Body>
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[recommendation]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[293]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[299]]></Data>
       <Data Name="Definitions(C0)#HeaderText"><![CDATA[existing product category]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[303]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[309]]></Data>
       <Data Name="Definitions(C1)#HeaderText"><![CDATA[customer category]]></Data>
-      <Data Name="Definitions(C1)#Width"><![CDATA[299]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[304]]></Data>
       <Data Name="Definitions(C3)#HeaderText"><![CDATA[availability]]></Data>
-      <Data Name="Definitions(C3)#Width"><![CDATA[156]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[162]]></Data>
     </ResourceSet>
   </Resources>
-</DT></definition>
+</DT>
+</definition>
 </ilog.rules.studio.model.dt:DecisionTable>
