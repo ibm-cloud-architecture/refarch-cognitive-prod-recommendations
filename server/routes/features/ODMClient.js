@@ -36,7 +36,7 @@ module.exports=  {
       headers: {
          "accept": "application/json",
          "content-type": "application/json",
-          authorization: "ApiKey " + config.odm.authtoken
+          authorization: config.odm.authtoken
       }
     }
 	if (config.debug) {

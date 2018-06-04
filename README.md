@@ -46,7 +46,7 @@ generate a new API Key and copy it in your clipboard.
 
  ![](docs/decision-comp-api-key.png)
 
-Edit the [the config.json](server/config/config.json) and paste this API key as the value for the `authtoken` field.
+Edit the [the config.json](server/config/config.json) and paste this API key as the value for the `authtoken` field. Be careful to leave "ApiKey " in front of your key, that is the full value of the `authtoken` field should read "ApiKey abcd" if your key is "abcd".
 
 1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) import the _Network_subscription_recommendation_ project and examine it. You can `Test` it within Decision Composer, sample input data is provided. The following screen shot illustrates the a customer, named 'Young' and the output from the rule execution, recommending a Fiber subscription at 25$.  
 
