@@ -54,8 +54,18 @@ public class CustomerProfile
 public class Product
 {
     public static final readonly com.ibm.cloud.refarch.wcs.model.Product ADSL;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product CABLE10;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product CABLE100;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product CABLE50;
     public static final readonly com.ibm.cloud.refarch.wcs.model.Product FIBRE25;
     public static final readonly com.ibm.cloud.refarch.wcs.model.Product FIBRE30;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product FOO;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product IPTV10;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product IPTV100;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product IPTV50;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product PARTNER_SATELLITE;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product PHONE;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Product VOIP;
     public int downloadSpeed;
     public int monthlyUsage;
     public string name;
@@ -69,8 +79,9 @@ public class Product
 public class Recommendation
 {
     public com.ibm.cloud.refarch.wcs.model.Product bestRecommended1st;
-    public com.ibm.cloud.refarch.wcs.model.Product bestRecommended2nd;
     public string customerId;
+    public com.ibm.cloud.refarch.wcs.model.Offer offer;
+    public com.ibm.cloud.refarch.wcs.model.Product recommendedProduct;
     public Recommendation();
 }
 

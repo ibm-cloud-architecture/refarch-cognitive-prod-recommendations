@@ -18,4 +18,14 @@
             ]]></body>
         </method>
     </class>
+    <class>
+        <businessName>com.ibm.cloud.refarch.wcs.model.Product</businessName>
+        <import>com.ibm.cloud.refarch.wcs.model.Product</import>
+        <attribute>
+            <name>FOO</name>
+            <getter language="arl"><![CDATA[
+            return new Product("ADSL","ADSL",25.00);
+            ]]></getter>
+        </attribute>
+    </class>
 </b2x:translation>
