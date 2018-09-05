@@ -29,5 +29,14 @@ public class Availability {
 			this.productCategories.add(pck);
 		}
 	}
+	public void removeProductCategories(String productCategories)
+	{
+		String[] pcks = productCategories.split(",");
+		for (int i=0; i<pcks.length;i++)
+		{
+			String pck = pcks[i].trim();
+			this.productCategories.remove(pck);
+		}
+	}
 	
 }

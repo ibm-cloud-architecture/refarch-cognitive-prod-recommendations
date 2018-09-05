@@ -1,5 +1,7 @@
 package com.ibm.cloud.refarch.wcs.model;
 
+import java.util.List;
+
 public class Customer {
 	private String id;
 	private String name;
@@ -18,10 +20,10 @@ public class Customer {
 	private String newZipCode;
 	private boolean carOwner;
 	private String profession;
-	private String churn;
+	private double churn;
 	private String maritalStatus;
 	
-	private Product existingProduct;
+	private List<Product> existingProducts;
 	private CustomerProfile profile;
 	
 	public String getId() {
@@ -54,11 +56,11 @@ public class Customer {
 	public void setNewZipCode(String newZipCode) {
 		this.newZipCode = newZipCode;
 	}
-	public Product getExistingProduct() {
-		return existingProduct;
+	public List<Product> getExistingProducts() {
+		return existingProducts;
 	}
-	public void setExistingProduct(Product existingProduct) {
-		this.existingProduct = existingProduct;
+	public void setExistingProducts(List<Product> existingProducts) {
+		this.existingProducts = existingProducts;
 	}
 	public CustomerProfile getProfile() {
 		return profile;
@@ -126,10 +128,10 @@ public class Customer {
 	public void setProfession(String profession) {
 		this.profession = profession;
 	}
-	public String getChurn() {
+	public double getChurn() {
 		return churn;
 	}
-	public void setChurn(String churn) {
+	public void setChurn(double churn) {
 		this.churn = churn;
 	}
 	public String getMaritalStatus() {

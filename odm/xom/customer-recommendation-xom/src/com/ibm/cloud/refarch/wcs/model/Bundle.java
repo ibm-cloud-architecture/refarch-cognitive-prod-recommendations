@@ -40,5 +40,11 @@ public class Bundle extends Product {
 		this.products = products;
 	}
 	
+	public static Bundle createBundle(String name, Product[] products) {
+		// do error handling
+		
+		Bundle bundle = new Bundle(name, Arrays.asList(products));
+		return bundle;
+	}
 	
 }

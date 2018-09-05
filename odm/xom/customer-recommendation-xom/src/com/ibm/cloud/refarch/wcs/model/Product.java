@@ -18,9 +18,9 @@ public class Product {
 	public static final Product CABLE10 = new Product("CABLE10","CABLE", 60.00);
 	public static final Product CABLE50 = new Product("CABLE50","CABLE", 80.00);
 	public static final Product CABLE100 = new Product("CABLE100","CABLE", 100.00);
-	public static final Product PARTNER_SATELLITE = new Product("PARTNER_SATELLITE","TV", 100.00);
+	public static final Product PARTNER_SATELLITE = new Product("PARTNER_SATELLITE","PARTNER_SATELLITE", 100.00);
 	public static final Product PHONE = new Product("PHONE","PHONE", 10.00);
-	public static final Product VOIP = new Product("VOIP","PHONE", 10.00);
+	public static final Product VOIP = new Product("VOIP","VOIP", 10.00);
 	
 	public Product() {
 		super();

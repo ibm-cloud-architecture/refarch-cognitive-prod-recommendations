@@ -19,6 +19,18 @@
         </method>
     </class>
     <class>
+        <businessName>com.ibm.cloud.refarch.wcs.model.Bundle</businessName>
+        <import>com.ibm.cloud.refarch.wcs.model.Bundle</import>
+        <method>
+            <name>createBundleVirtual</name>
+            <parameter type="java.lang.String"/>
+            <parameter type="com.ibm.cloud.refarch.wcs.model.Product[]"/>
+            <body language="arl"><![CDATA[
+            Bundle.createBundle(name,products);
+            ]]></body>
+        </method>
+    </class>
+    <class>
         <businessName>com.ibm.cloud.refarch.wcs.model.Product</businessName>
         <import>com.ibm.cloud.refarch.wcs.model.Product</import>
         <attribute>
@@ -27,5 +39,22 @@
             return new Product("ADSL","ADSL",25.00);
             ]]></getter>
         </attribute>
+    </class>
+    <class>
+        <businessName>com.ibm.cloud.refarch.wcs.model.Recommendation</businessName>
+        <method>
+            <name>addToBestRecommended1st</name>
+            <parameter type="com.ibm.cloud.refarch.wcs.model.Product"/>
+            <body language="irl"><![CDATA[
+            this.bestRecommended1st.add(argument);
+            ]]></body>
+        </method>
+        <method>
+            <name>removeFromBestRecommended1st</name>
+            <parameter type="com.ibm.cloud.refarch.wcs.model.Product"/>
+            <body language="irl"><![CDATA[
+            this.bestRecommended1st.remove(argument);
+            ]]></body>
+        </method>
     </class>
 </b2x:translation>

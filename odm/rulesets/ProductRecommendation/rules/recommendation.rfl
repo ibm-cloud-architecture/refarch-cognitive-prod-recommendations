@@ -9,10 +9,10 @@
   <Body>
     <TaskList>
       <StartTask Identifier="task_0">
-        <Actions Language="irl"><![CDATA[availability = new Availability();]]>&#13;<![CDATA[
-availability.zipCode = customer.newZipCode;]]>&#13;<![CDATA[
-]]>&#13;<![CDATA[
-recommendation = new Recommendation();]]>&#13;<![CDATA[
+        <Actions Language="irl"><![CDATA[availability = new Availability();
+availability.zipCode = customer.newZipCode;
+
+recommendation = new Recommendation();
 recommendation.customerId = customer.id;]]></Actions>
       </StartTask>
       <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="product availability" Ordering="Default">
@@ -30,6 +30,11 @@ recommendation.customerId = customer.id;]]></Actions>
           <Package Name="product recommendation"/>
         </RuleList>
       </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="  product removal" Ordering="Default">
+        <RuleList>
+          <Package Name="product removal"/>
+        </RuleList>
+      </RuleTask>
       <StopTask Identifier="task_1"/>
     </TaskList>
     <NodeList>
@@ -38,35 +43,42 @@ recommendation.customerId = customer.id;]]></Actions>
       <TaskNode Identifier="node_2" Task="product availability"/>
       <TaskNode Identifier="node_3" Task="customer profiling"/>
       <TaskNode Identifier="node_4" Task="product recommendation"/>
+      <TaskNode Identifier="node_5" Task="  product removal"/>
     </NodeList>
     <TransitionList>
       <Transition Identifier="transition_0" Source="node_0" Target="node_2"/>
-      <Transition Identifier="transition_1" Source="node_2" Target="node_3"/>
+      <Transition Identifier="transition_1" Source="node_2" Target="node_5"/>
       <Transition Identifier="transition_2" Source="node_3" Target="node_4"/>
       <Transition Identifier="transition_3" Source="node_4" Target="node_1"/>
+      <Transition Identifier="transition_4" Source="node_5" Target="node_3"/>
     </TransitionList>
   </Body>
   <Resources>
     <ResourceSet Locale="en_US">
       <Data Name="node_2#height">53.402344</Data>
-      <Data Name="node_4#width">131.3789</Data>
+      <Data Name="node_4#width">140.60742</Data>
       <Data Name="node_1#height">22.0</Data>
       <Data Name="node_3#height">53.402344</Data>
       <Data Name="node_0#height">21.0</Data>
       <Data Name="node_4#height">53.402344</Data>
+      <Data Name="node_5#name">node_1</Data>
       <Data Name="node_2#name">node_2</Data>
-      <Data Name="node_2#width">102.0</Data>
+      <Data Name="node_5#height">52.265625</Data>
+      <Data Name="node_2#width">103.74609</Data>
       <Data Name="node_0#width">21.0</Data>
-      <Data Name="node_3#y">201.10352</Data>
-      <Data Name="node_4#x">65.68945</Data>
-      <Data Name="node_4#y">304.50586</Data>
-      <Data Name="node_0#x">65.68945</Data>
-      <Data Name="node_0#y">9.5</Data>
-      <Data Name="node_1#x">65.68945</Data>
-      <Data Name="node_1#y">392.20703</Data>
-      <Data Name="node_2#x">65.68945</Data>
+      <Data Name="node_3#y">291.10352</Data>
+      <Data Name="node_4#x">70.30371</Data>
+      <Data Name="node_4#y">394.50586</Data>
+      <Data Name="node_5#x">70.30371</Data>
+      <Data Name="node_5#y">194.40234</Data>
+      <Data Name="node_5#width">102.0</Data>
+      <Data Name="node_0#x">70.30371</Data>
+      <Data Name="node_0#y">10.5</Data>
+      <Data Name="node_1#x">70.30371</Data>
+      <Data Name="node_1#y">482.20703</Data>
+      <Data Name="node_2#x">70.30371</Data>
       <Data Name="node_2#y">97.70117</Data>
-      <Data Name="node_3#x">65.68945</Data>
+      <Data Name="node_3#x">70.30371</Data>
       <Data Name="node_1#name">node_2</Data>
       <Data Name="node_3#width">102.0</Data>
       <Data Name="node_4#name">node_4</Data>
@@ -76,9 +88,10 @@ recommendation.customerId = customer.id;]]></Actions>
     </ResourceSet>
   </Resources>
   <Properties>
-    <imports><![CDATA[import com.ibm.cloud.refarch.wcs.model.*;]]>&#13;<![CDATA[
-use customer;]]>&#13;<![CDATA[
+    <imports><![CDATA[import com.ibm.cloud.refarch.wcs.model.*;
+use customer;
 use availability;]]></imports>
   </Properties>
-</Ruleflow></rfModel>
+</Ruleflow>
+</rfModel>
 </ilog.rules.studio.model.ruleflow:RuleFlow>

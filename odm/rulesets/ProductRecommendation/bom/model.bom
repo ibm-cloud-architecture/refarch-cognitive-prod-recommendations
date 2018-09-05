@@ -13,6 +13,27 @@ public class Availability
     public void addProductCategories(string arg);
     public void addToProductCategories(string argument);
     public void removeFromProductCategories(string argument);
+    public void removeProductCategories(string arg);
+}
+
+public class Bundle
+        extends com.ibm.cloud.refarch.wcs.model.Product
+{
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV1;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV2;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV3;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV4;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV5;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV6;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle TRIPLEPLAY1;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle TRIPLEPLAY2;
+    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle TRIPLEPLAY3;
+    public string name;
+    public java.util.List products domain 0,* class com.ibm.cloud.refarch.wcs.model.Product;
+    public Bundle(string arg1, 
+        java.util.List arg2 domain 0,* class com.ibm.cloud.refarch.wcs.model.Product);
+    public static com.ibm.cloud.refarch.wcs.model.Bundle createBundle(string arg1, com.ibm.cloud.refarch.wcs.model.Product[] arg2);
+    public static final void createBundleVirtual(string name, com.ibm.cloud.refarch.wcs.model.Product[] products);
 }
 
 public class Customer
@@ -20,10 +41,10 @@ public class Customer
     public int age;
     public boolean carOwner;
     public int children;
-    public string churn;
+    public double churn;
     public string emailAddress;
     public int estimatedIncome;
-    public com.ibm.cloud.refarch.wcs.model.Product existingProduct;
+    public java.util.List existingProducts domain 0,* class com.ibm.cloud.refarch.wcs.model.Product;
     public string firstName;
     public string gender;
     public string id;
@@ -49,6 +70,16 @@ public class CustomerProfile
     public string name;
     public CustomerProfile(string arg1, int arg2, int arg3);
     public CustomerProfile();
+}
+
+public class Offer
+{
+    public java.lang.Integer contractTermMonths;
+    public java.math.BigDecimal discount;
+    public java.util.List eligibleProducts domain 0,* class string;
+    public java.util.Date endDate;
+    public java.util.Date starDate;
+    public Offer();
 }
 
 public class Product
@@ -78,10 +109,18 @@ public class Product
 
 public class Recommendation
 {
-    public com.ibm.cloud.refarch.wcs.model.Product bestRecommended1st;
+    public java.util.List bestRecommended1st domain 0,* class com.ibm.cloud.refarch.wcs.model.Product;
     public string customerId;
-    public com.ibm.cloud.refarch.wcs.model.Offer offer;
-    public com.ibm.cloud.refarch.wcs.model.Product recommendedProduct;
+    public double discountPercent;
+    public double totalPrice;
     public Recommendation();
+    public void addToBestRecommended1st(com.ibm.cloud.refarch.wcs.model.Product argument);
+    public void removeFromBestRecommended1st(com.ibm.cloud.refarch.wcs.model.Product argument);
+}
+
+public class Recommendations
+{
+    public java.util.List recommendations domain 0,* class com.ibm.cloud.refarch.wcs.model.Recommendation;
+    public Recommendations();
 }
 

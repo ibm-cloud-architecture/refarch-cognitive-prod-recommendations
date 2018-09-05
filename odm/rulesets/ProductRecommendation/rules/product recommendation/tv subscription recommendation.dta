@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
-  <name>subscription recommendation</name>
-  <uuid>ff1b8520-bd24-4749-ade3-fbaa2c573084</uuid>
+  <name>tv subscription recommendation</name>
+  <uuid>d30df079-40ce-4947-9b46-8d4b51eb1004</uuid>
   <locale>en_US</locale>
   <definition>
 <DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
@@ -40,73 +40,20 @@
       <Partition DefId="C0">
         <Condition>
           <Expression>
-            <Param><![CDATA["ADSL"]]></Param>
+            <Param><![CDATA["CABLE"]]></Param>
           </Expression>
           <Partition DefId="C3">
             <Condition>
               <Expression>
-                <Param><![CDATA["FIBRE"]]></Param>
+                <Param><![CDATA["PARTNER_SATELLITE"]]></Param>
               </Expression>
               <Partition DefId="C1">
                 <Condition>
-                  <Expression>
-                    <Param><![CDATA[Student]]></Param>
-                  </Expression>
+                  <Expression/>
                   <ActionSet>
                     <Action DefId="A0">
                       <Expression>
-                        <Param><![CDATA[FIBRE25]]></Param>
-                      </Expression>
-                    </Action>
-                  </ActionSet>
-                </Condition>
-                <Condition>
-                  <Expression>
-                    <Param><![CDATA[Adult]]></Param>
-                  </Expression>
-                  <ActionSet>
-                    <Action DefId="A0">
-                      <Expression>
-                        <Param><![CDATA[FIBRE30]]></Param>
-                      </Expression>
-                    </Action>
-                  </ActionSet>
-                </Condition>
-                <Condition>
-                  <Expression>
-                    <Param><![CDATA[Retired]]></Param>
-                  </Expression>
-                  <ActionSet>
-                    <Action DefId="A0">
-                      <Expression>
-                        <Param><![CDATA[ADSL]]></Param>
-                      </Expression>
-                    </Action>
-                  </ActionSet>
-                </Condition>
-              </Partition>
-            </Condition>
-          </Partition>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA["ADSL"]]></Param>
-          </Expression>
-          <Partition DefId="C3">
-            <Condition>
-              <Expression>
-                <Param><![CDATA["ADSL"]]></Param>
-              </Expression>
-              <Partition DefId="C1">
-                <Condition>
-                  <Expression>
-                    <Text><![CDATA[<an object> is one of <objects>]]></Text>
-                    <Param><![CDATA[{ Adult , Student , Retired }]]></Param>
-                  </Expression>
-                  <ActionSet>
-                    <Action DefId="A0">
-                      <Expression>
-                        <Param><![CDATA[ADSL]]></Param>
+                        <Param><![CDATA[PARTNER_SATELLITE]]></Param>
                       </Expression>
                     </Action>
                   </ActionSet>

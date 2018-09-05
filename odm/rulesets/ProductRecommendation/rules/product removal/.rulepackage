@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>product removal</name>
+  <uuid>56406432-03ff-4136-8065-3c95d27543c8</uuid>
+</ilog.rules.studio.model.base:RulePackage>

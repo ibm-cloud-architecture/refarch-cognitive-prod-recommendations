@@ -1,37 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
-  <name>subscription recommendation</name>
-  <uuid>ff1b8520-bd24-4749-ade3-fbaa2c573084</uuid>
+  <name>remove incompatible products</name>
+  <uuid>c40b29e5-d3ee-41ca-90ba-75a4b47d1938</uuid>
   <locale>en_US</locale>
   <definition>
 <DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
   <Body>
-    <Preconditions>
-      <Text><![CDATA[definitions
-	set 'existing product' to a product in the existing products of customer ;]]></Text>
-    </Preconditions>
     <Structure>
       <ConditionDefinitions>
         <ConditionDefinition Id="C0">
-          <ExpressionDefinition>
-            <Text><![CDATA[the product category of 'existing product'  is <a string>]]></Text>
-          </ExpressionDefinition>
-        </ConditionDefinition>
-        <ConditionDefinition Id="C3">
           <ExpressionDefinition>
             <Text><![CDATA[the product categories of availability contain <a string>]]></Text>
           </ExpressionDefinition>
         </ConditionDefinition>
         <ConditionDefinition Id="C1">
           <ExpressionDefinition>
-            <Text><![CDATA[the profile of customer is <an object>]]></Text>
+            <Text><![CDATA[the product categories of availability do not contain <a string>]]></Text>
           </ExpressionDefinition>
         </ConditionDefinition>
       </ConditionDefinitions>
       <ActionDefinitions>
         <ActionDefinition Id="A0">
           <ExpressionDefinition>
-            <Text><![CDATA[add <a product> to the best recommended1sts of recommendation]]></Text>
+            <Text><![CDATA[remove <a string> from the product categories of availability]]></Text>
           </ExpressionDefinition>
         </ActionDefinition>
       </ActionDefinitions>
@@ -42,78 +33,44 @@
           <Expression>
             <Param><![CDATA["ADSL"]]></Param>
           </Expression>
-          <Partition DefId="C3">
+          <Partition DefId="C1">
             <Condition>
               <Expression>
                 <Param><![CDATA["FIBRE"]]></Param>
               </Expression>
-              <Partition DefId="C1">
-                <Condition>
+              <ActionSet>
+                <Action DefId="A0">
                   <Expression>
-                    <Param><![CDATA[Student]]></Param>
+                    <Param><![CDATA["IPTV"]]></Param>
                   </Expression>
-                  <ActionSet>
-                    <Action DefId="A0">
-                      <Expression>
-                        <Param><![CDATA[FIBRE25]]></Param>
-                      </Expression>
-                    </Action>
-                  </ActionSet>
-                </Condition>
-                <Condition>
-                  <Expression>
-                    <Param><![CDATA[Adult]]></Param>
-                  </Expression>
-                  <ActionSet>
-                    <Action DefId="A0">
-                      <Expression>
-                        <Param><![CDATA[FIBRE30]]></Param>
-                      </Expression>
-                    </Action>
-                  </ActionSet>
-                </Condition>
-                <Condition>
-                  <Expression>
-                    <Param><![CDATA[Retired]]></Param>
-                  </Expression>
-                  <ActionSet>
-                    <Action DefId="A0">
-                      <Expression>
-                        <Param><![CDATA[ADSL]]></Param>
-                      </Expression>
-                    </Action>
-                  </ActionSet>
-                </Condition>
-              </Partition>
+                </Action>
+              </ActionSet>
             </Condition>
           </Partition>
         </Condition>
         <Condition>
-          <Expression>
-            <Param><![CDATA["ADSL"]]></Param>
-          </Expression>
-          <Partition DefId="C3">
-            <Condition>
-              <Expression>
-                <Param><![CDATA["ADSL"]]></Param>
-              </Expression>
-              <Partition DefId="C1">
-                <Condition>
-                  <Expression>
-                    <Text><![CDATA[<an object> is one of <objects>]]></Text>
-                    <Param><![CDATA[{ Adult , Student , Retired }]]></Param>
-                  </Expression>
-                  <ActionSet>
-                    <Action DefId="A0">
-                      <Expression>
-                        <Param><![CDATA[ADSL]]></Param>
-                      </Expression>
-                    </Action>
-                  </ActionSet>
-                </Condition>
-              </Partition>
-            </Condition>
-          </Partition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+          </ActionSet>
         </Condition>
         <Condition>
           <Expression/>
@@ -248,14 +205,12 @@
   </Body>
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
-      <Data Name="Definitions(A0)#HeaderText"><![CDATA[recommendation]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[196]]></Data>
-      <Data Name="Definitions(C0)#HeaderText"><![CDATA[existing product category]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[202]]></Data>
-      <Data Name="Definitions(C1)#HeaderText"><![CDATA[customer category]]></Data>
-      <Data Name="Definitions(C1)#Width"><![CDATA[197]]></Data>
-      <Data Name="Definitions(C3)#HeaderText"><![CDATA[availability]]></Data>
-      <Data Name="Definitions(C3)#Width"><![CDATA[115]]></Data>
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[remove]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[236]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[available products]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[237]]></Data>
+      <Data Name="Definitions(C1)#HeaderText"><![CDATA[unavailable products]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[237]]></Data>
     </ResourceSet>
   </Resources>
 </DT>
