@@ -81,19 +81,6 @@ com.ibm.cloud.refarch.wcs.model.CustomerProfile.incomeGrouping#phrase.navigation
 com.ibm.cloud.refarch.wcs.model.CustomerProfile.name#phrase.action = set the name of {this} to {name}
 com.ibm.cloud.refarch.wcs.model.CustomerProfile.name#phrase.navigation = {name} of {this}
 
-# com.ibm.cloud.refarch.wcs.model.Offer
-com.ibm.cloud.refarch.wcs.model.Offer#concept.label = offer
-com.ibm.cloud.refarch.wcs.model.Offer.contractTermMonths#phrase.action = set the contract term months of {this} to {contract term months}
-com.ibm.cloud.refarch.wcs.model.Offer.contractTermMonths#phrase.navigation = {contract term months} of {this}
-com.ibm.cloud.refarch.wcs.model.Offer.discount#phrase.action = set the discount of {this} to {discount}
-com.ibm.cloud.refarch.wcs.model.Offer.discount#phrase.navigation = {discount} of {this}
-com.ibm.cloud.refarch.wcs.model.Offer.eligibleProducts#phrase.action = set the eligible products of {this} to {eligible product}
-com.ibm.cloud.refarch.wcs.model.Offer.eligibleProducts#phrase.navigation = {eligible product} of {this}
-com.ibm.cloud.refarch.wcs.model.Offer.endDate#phrase.action = set the end date of {this} to {end date}
-com.ibm.cloud.refarch.wcs.model.Offer.endDate#phrase.navigation = {end date} of {this}
-com.ibm.cloud.refarch.wcs.model.Offer.starDate#phrase.action = set the star date of {this} to {star date}
-com.ibm.cloud.refarch.wcs.model.Offer.starDate#phrase.navigation = {star date} of {this}
-
 # com.ibm.cloud.refarch.wcs.model.Product
 com.ibm.cloud.refarch.wcs.model.Product#concept.label = product
 com.ibm.cloud.refarch.wcs.model.Product.ADSL#instance.label = ADSL
@@ -133,8 +120,3 @@ com.ibm.cloud.refarch.wcs.model.Recommendation.discountPercent#phrase.navigation
 com.ibm.cloud.refarch.wcs.model.Recommendation.removeFromBestRecommended1st(com.ibm.cloud.refarch.wcs.model.Product)#phrase.action = remove {0} from the best recommended1sts of {this}
 com.ibm.cloud.refarch.wcs.model.Recommendation.totalPrice#phrase.action = set the total price of {this} to {total price}
 com.ibm.cloud.refarch.wcs.model.Recommendation.totalPrice#phrase.navigation = {total price} of {this}
-
-# com.ibm.cloud.refarch.wcs.model.Recommendations
-com.ibm.cloud.refarch.wcs.model.Recommendations#concept.label = recommendations
-com.ibm.cloud.refarch.wcs.model.Recommendations.recommendations#phrase.action = set the recommendations of {this} to {recommendation}
-com.ibm.cloud.refarch.wcs.model.Recommendations.recommendations#phrase.navigation = {recommendation} of {this}

@@ -1,0 +1,37 @@
+{
+  "__DecisionID__": "string",
+  "customer": {
+    "id": "string",
+    "name": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "emailAddress": "string",
+    "age": 3,
+    "gender": "string",
+    "type": "string",
+    "status": "string",
+    "children": 3,
+    "estimatedIncome": 3,
+    "previousZipCode": "string",
+    "newZipCode": "string",
+    "carOwner": false,
+    "profession": "string",
+    "churn": 10517320,
+    "maritalStatus": "string",
+    "existingProducts": [
+      {
+        "name": "string",
+        "packageName": "string",
+        "productCategory": "string",
+        "monthlyUsage": 3,
+        "downloadSpeed": 3,
+        "price": 10517320
+      }
+    ],
+    "profile": {
+      "name": "string",
+      "ageGrouping": 3,
+      "incomeGrouping": 3
+    }
+  }
+}

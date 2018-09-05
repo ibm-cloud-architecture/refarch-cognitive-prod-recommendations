@@ -19,15 +19,6 @@ public class Availability
 public class Bundle
         extends com.ibm.cloud.refarch.wcs.model.Product
 {
-    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV1;
-    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV2;
-    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV3;
-    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV4;
-    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV5;
-    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle INTERNETTV6;
-    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle TRIPLEPLAY1;
-    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle TRIPLEPLAY2;
-    public static final readonly com.ibm.cloud.refarch.wcs.model.Bundle TRIPLEPLAY3;
     public string name;
     public java.util.List products domain 0,* class com.ibm.cloud.refarch.wcs.model.Product;
     public Bundle(string arg1, 
@@ -72,16 +63,6 @@ public class CustomerProfile
     public CustomerProfile();
 }
 
-public class Offer
-{
-    public java.lang.Integer contractTermMonths;
-    public java.math.BigDecimal discount;
-    public java.util.List eligibleProducts domain 0,* class string;
-    public java.util.Date endDate;
-    public java.util.Date starDate;
-    public Offer();
-}
-
 public class Product
 {
     public static final readonly com.ibm.cloud.refarch.wcs.model.Product ADSL;
@@ -115,12 +96,7 @@ public class Recommendation
     public double totalPrice;
     public Recommendation();
     public void addToBestRecommended1st(com.ibm.cloud.refarch.wcs.model.Product argument);
+    public double calculateTotalPrice();
     public void removeFromBestRecommended1st(com.ibm.cloud.refarch.wcs.model.Product argument);
-}
-
-public class Recommendations
-{
-    public java.util.List recommendations domain 0,* class com.ibm.cloud.refarch.wcs.model.Recommendation;
-    public Recommendations();
 }
 

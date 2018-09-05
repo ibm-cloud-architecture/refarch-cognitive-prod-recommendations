@@ -1,10 +1,11 @@
 package com.ibm.cloud.refarch.wcs.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Recommendation {
 	private String customerId;
-	private List<Product> bestRecommended1st;
+	private List<Product> bestRecommended1st = new ArrayList<Product>();
 	private double totalPrice;
 	private double discountPercent;
 	
@@ -31,6 +32,15 @@ public class Recommendation {
 	}
 	public void setDiscountPercent(double discountPercent) {
 		this.discountPercent = discountPercent;
+	}
+	
+	public double calculateTotalPrice(){
+		double totalPrice = 0.0;
+		for (Product product : bestRecommended1st) {
+			totalPrice = totalPrice + product.getPrice();
+		}
+		totalPrice = totalPrice*(1.0-discountPercent);
+		return totalPrice;
 	}
 	
 }

@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "5df9e10a-6920-48fd-9898-6cc2a3b42c7b",
+		"name": "Product Recommendation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9090/DecisionService/rest/v1/ProductRecommendationRuleApp/ProductRecommendation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"__DecisionID__\": \"string\",\n  \"customer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"emailAddress\": \"string\",\n    \"age\": 3,\n    \"gender\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"children\": 3,\n    \"estimatedIncome\": 3,\n    \"previousZipCode\": \"string\",\n    \"newZipCode\": \"string\",\n    \"carOwner\": false,\n    \"profession\": \"string\",\n    \"churn\": 10517320,\n    \"maritalStatus\": \"string\",\n    \"existingProducts\": [\n      {\n        \"name\": \"string\",\n        \"packageName\": \"string\",\n        \"productCategory\": \"string\",\n        \"monthlyUsage\": 3,\n        \"downloadSpeed\": 3,\n        \"price\": 10517320\n      }\n    ],\n    \"profile\": {\n      \"name\": \"string\",\n      \"ageGrouping\": 3,\n      \"incomeGrouping\": 3\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/DecisionService/rest/v1/ProductRecommendationRuleApp/ProductRecommendation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"DecisionService",
+						"rest",
+						"v1",
+						"ProductRecommendationRuleApp",
+						"ProductRecommendation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recommend Satellite",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"__DecisionID__\": \"string\",\n  \"customer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"emailAddress\": \"string\",\n    \"age\": 3,\n    \"gender\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"children\": 3,\n    \"estimatedIncome\": 3,\n    \"previousZipCode\": \"string\",\n    \"newZipCode\": \"string\",\n    \"carOwner\": false,\n    \"profession\": \"string\",\n    \"churn\": 10517320,\n    \"maritalStatus\": \"string\",\n    \"existingProducts\": [\n      {\n        \"name\": \"string\",\n        \"packageName\": \"string\",\n        \"productCategory\": \"string\",\n        \"monthlyUsage\": 3,\n        \"downloadSpeed\": 3,\n        \"price\": 10517320\n      }\n    ],\n    \"profile\": {\n      \"name\": \"string\",\n      \"ageGrouping\": 3,\n      \"incomeGrouping\": 3\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/DecisionService/rest/v1/ProductRecommendationRuleApp/ProductRecommendation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"DecisionService",
+						"rest",
+						"v1",
+						"ProductRecommendationRuleApp",
+						"ProductRecommendation"
+					]
+				},
+				"description": "Customer is moving to an area that doesn't offer cable or iptv, so they are recommended satellite"
+			},
+			"response": []
+		},
+		{
+			"name": "IPTV Unavailable for ADSL Customers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9090/DecisionService/rest/v1/ProductRecommendationRuleApp/ProductRecommendation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"DecisionService",
+						"rest",
+						"v1",
+						"ProductRecommendationRuleApp",
+						"ProductRecommendation"
+					]
+				},
+				"description": "Customer in area with ADSL is unable to get IPTV"
+			},
+			"response": []
+		}
+	]
+}

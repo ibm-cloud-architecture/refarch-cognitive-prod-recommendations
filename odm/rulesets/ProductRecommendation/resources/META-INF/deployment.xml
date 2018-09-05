@@ -10,4 +10,9 @@
             <uri value="reslib://ProductRecommendationRuleApp_1.0/1.0"/>
         </xom>
     </config>
+<config serverURL="http://localhost:9090/res">
+        <xom>
+            <uri value="reslib://ProductRecommendationRuleApp_1.0/1.4"/>
+        </xom>
+    </config>
 </project-deployment>

@@ -67,7 +67,7 @@
           <ActionSet>
             <Action DefId="A0">
               <Expression>
-                <Param><![CDATA["ADSL.FIBRE"]]></Param>
+                <Param><![CDATA["ADSL,FIBRE"]]></Param>
               </Expression>
             </Action>
           </ActionSet>
@@ -210,9 +210,9 @@
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[set availability]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[552]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[483]]></Data>
       <Data Name="Definitions(C0)#HeaderText"><![CDATA[zip code]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[552]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[484]]></Data>
     </ResourceSet>
   </Resources>
 </DT>
