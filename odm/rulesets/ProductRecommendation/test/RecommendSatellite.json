@@ -1,5 +1,4 @@
 {
-  "__DecisionID__": "string",
   "customer": {
     "id": "string",
     "name": "string",
@@ -13,16 +12,16 @@
     "children": 3,
     "estimatedIncome": 3,
     "previousZipCode": "string",
-    "newZipCode": "string",
+    "newZipCode": "6000",
     "carOwner": false,
     "profession": "string",
-    "churn": 10517320,
+    "churn": 0.0,
     "maritalStatus": "string",
     "existingProducts": [
       {
         "name": "string",
         "packageName": "string",
-        "productCategory": "string",
+        "productCategory": "CABLE",
         "monthlyUsage": 3,
         "downloadSpeed": 3,
         "price": 10517320
