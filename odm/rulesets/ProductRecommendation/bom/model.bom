@@ -92,10 +92,12 @@ public class Recommendation
 {
     public java.util.List bestRecommended1st domain 0,* class com.ibm.cloud.refarch.wcs.model.Product;
     public string customerId;
-    public double discountPercent;
+    public double discountPercent
+                property update "true";
     public double totalPrice;
     public Recommendation();
-    public void addToBestRecommended1st(com.ibm.cloud.refarch.wcs.model.Product argument);
+    public void addToBestRecommended1st(com.ibm.cloud.refarch.wcs.model.Product argument)
+                property update "true";
     public double calculateTotalPrice();
     public void removeFromBestRecommended1st(com.ibm.cloud.refarch.wcs.model.Product argument);
 }

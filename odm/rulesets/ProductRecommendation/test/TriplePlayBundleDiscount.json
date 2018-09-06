@@ -1,0 +1,53 @@
+{
+  "customer": {
+    "id": "string",
+    "name": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "emailAddress": "string",
+    "age": 18,
+    "gender": "string",
+    "type": "string",
+    "status": "string",
+    "children": 3,
+    "estimatedIncome": 3,
+    "previousZipCode": "string",
+    "newZipCode": "6002",
+    "carOwner": false,
+    "profession": "string",
+    "churn": 0.2,
+    "maritalStatus": "string",
+    "existingProducts": [
+      {
+        "name": "string",
+        "packageName": "string",
+        "productCategory": "PHONE",
+        "monthlyUsage": 3,
+        "downloadSpeed": 3,
+        "price": 10.00
+      },
+      {
+        "name": "string",
+        "packageName": "string",
+        "productCategory": "ADSL",
+        "monthlyUsage": 3,
+        "downloadSpeed": 3,
+        "price": 10.00
+      },
+      {
+        "name": "string",
+        "packageName": "string",
+        "productCategory": "CABLE",
+        "monthlyUsage": 3,
+        "downloadSpeed": 3,
+        "price": 10.00
+      }
+
+    ],
+    "profile": {
+      "name": "string",
+      "ageGrouping": 3,
+      "incomeGrouping": 3
+    }
+  }
+}

@@ -25,7 +25,7 @@ recommendation.customerId = customer.id;]]></Actions>
           <Package Name="customer profiling"/>
         </RuleList>
       </RuleTask>
-      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="product recommendation" Ordering="Default">
+      <RuleTask ExecutionMode="RetePlus" ExitCriteria="None" Identifier="product recommendation" Ordering="Default">
         <RuleList>
           <Package Name="product recommendation"/>
         </RuleList>
@@ -35,7 +35,7 @@ recommendation.customerId = customer.id;]]></Actions>
           <Package Name="product removal"/>
         </RuleList>
       </RuleTask>
-      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="price calculation" Ordering="Default">
+      <RuleTask ExecutionMode="RetePlus" ExitCriteria="None" Identifier="price calculation" Ordering="Default">
         <RuleList>
           <Package Name="price calculation"/>
         </RuleList>

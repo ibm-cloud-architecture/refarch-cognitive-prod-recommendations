@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
-  <name>calculate price</name>
-  <uuid>0b2fe46a-6495-4fa4-bd4a-e242f1ef79cd</uuid>
+  <name>determine phone availability</name>
+  <uuid>1c28da4f-d5f4-45d9-ac61-ee853a76562e</uuid>
   <locale>en_US</locale>
   <definition>
 <DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
@@ -10,14 +10,14 @@
       <ConditionDefinitions>
         <ConditionDefinition Id="C0">
           <ExpressionDefinition>
-            <Text><![CDATA[the churn of customer is <a number>]]></Text>
+            <Text><![CDATA[the new zip code of customer is <an object>]]></Text>
           </ExpressionDefinition>
         </ConditionDefinition>
       </ConditionDefinitions>
       <ActionDefinitions>
         <ActionDefinition Id="A0">
           <ExpressionDefinition>
-            <Text><![CDATA[set the discount percent of recommendation  to <a number>]]></Text>
+            <Text><![CDATA[add <a string> to the product categories of availability]]></Text>
           </ExpressionDefinition>
         </ActionDefinition>
       </ActionDefinitions>
@@ -26,70 +26,13 @@
       <Partition DefId="C0">
         <Condition>
           <Expression>
-            <Param><![CDATA[0]]></Param>
+            <Otherwise/>
           </Expression>
           <ActionSet>
             <Action DefId="A0">
               <Expression>
-                <Param><![CDATA[0]]></Param>
+                <Param><![CDATA["PHONE,VOIP"]]></Param>
               </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Text><![CDATA[<a number> is strictly between <min> and <max>]]></Text>
-            <Param><![CDATA[0.0]]></Param>
-            <Param><![CDATA[0.5]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression>
-                <Param><![CDATA[0.02]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Text><![CDATA[<a number> is at least <min> and less than <max>]]></Text>
-            <Param><![CDATA[0.5]]></Param>
-            <Param><![CDATA[0.75]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression>
-                <Param><![CDATA[0.05]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Text><![CDATA[<a number> is at least <a number>]]></Text>
-            <Param><![CDATA[0.75]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression>
-                <Param><![CDATA[0.07]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
             </Action>
           </ActionSet>
         </Condition>
@@ -218,10 +161,10 @@
   </Body>
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
-      <Data Name="Definitions(A0)#HeaderText"><![CDATA[discount percent]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[355]]></Data>
-      <Data Name="Definitions(C0)#HeaderText"><![CDATA[customer churn score]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[355]]></Data>
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[set availability]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[483]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[zip code]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[484]]></Data>
     </ResourceSet>
   </Resources>
 </DT>

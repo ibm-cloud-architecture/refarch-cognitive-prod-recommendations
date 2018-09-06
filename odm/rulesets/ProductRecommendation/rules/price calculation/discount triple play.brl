@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>discount triple play</name>
+  <uuid>033a725f-e66f-4fdc-8ede-dfa5bdd03312</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[if 
+	there is one product in the best recommended1sts of recommendation where the product category of this product is one of { "CABLE","IPTV"}, and
+	there is one product in the best recommended1sts of recommendation where the product category of this product is one of { "PHONE","VOIP"}, and
+	there is one product in the best recommended1sts of recommendation where the product category of this product is one of { "ADSL","FIBRE"},
+then
+	set the discount percent of recommendation to the discount percent of recommendation + 0.1;
+		]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

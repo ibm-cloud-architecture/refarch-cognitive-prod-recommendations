@@ -8,7 +8,12 @@
   <Body>
     <Preconditions>
       <Text><![CDATA[definitions
-	set 'existing product' to a product in the existing products of customer ;]]></Text>
+	set 'existing product' to a product in the existing products of customer ;
+	
+if
+	there is no product in the best recommended1sts of recommendation where the product category of this product is one of {"ADSL","FIBRE"},
+
+]]></Text>
     </Preconditions>
     <Structure>
       <ConditionDefinitions>
@@ -249,13 +254,13 @@
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[recommendation]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[196]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[261]]></Data>
       <Data Name="Definitions(C0)#HeaderText"><![CDATA[existing product category]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[202]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[266]]></Data>
       <Data Name="Definitions(C1)#HeaderText"><![CDATA[customer category]]></Data>
-      <Data Name="Definitions(C1)#Width"><![CDATA[197]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[261]]></Data>
       <Data Name="Definitions(C3)#HeaderText"><![CDATA[availability]]></Data>
-      <Data Name="Definitions(C3)#Width"><![CDATA[115]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[179]]></Data>
     </ResourceSet>
   </Resources>
 </DT>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
-  <name>tv subscription recommendation</name>
-  <uuid>d30df079-40ce-4947-9b46-8d4b51eb1004</uuid>
+  <name>phone subscription recommendation</name>
+  <uuid>1eb09e23-c7c7-489e-8782-e7b1084cbe2f</uuid>
   <locale>en_US</locale>
   <definition>
 <DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
@@ -22,9 +22,9 @@
             <Text><![CDATA[the product categories of availability contain <a string>]]></Text>
           </ExpressionDefinition>
         </ConditionDefinition>
-        <ConditionDefinition Id="C1">
+        <ConditionDefinition Id="C2">
           <ExpressionDefinition>
-            <Text><![CDATA[the profile of customer is <an object>]]></Text>
+            <Text><![CDATA[the product categories of availability do not contain <an object>]]></Text>
           </ExpressionDefinition>
         </ConditionDefinition>
       </ConditionDefinitions>
@@ -40,17 +40,17 @@
       <Partition DefId="C0">
         <Condition>
           <Expression>
-            <Param><![CDATA["IPTV"]]></Param>
+            <Param><![CDATA["PHONE"]]></Param>
           </Expression>
           <Partition DefId="C3">
             <Condition>
               <Expression>
-                <Param><![CDATA["IPTV"]]></Param>
+                <Param><![CDATA["PHONE"]]></Param>
               </Expression>
               <ActionSet>
                 <Action DefId="A0">
                   <Expression>
-                    <Param><![CDATA[IPTV50]]></Param>
+                    <Param><![CDATA[PHONE]]></Param>
                   </Expression>
                 </Action>
               </ActionSet>
@@ -59,20 +59,22 @@
         </Condition>
         <Condition>
           <Expression>
-            <Param><![CDATA["IPTV"]]></Param>
+            <Param><![CDATA["PHONE"]]></Param>
           </Expression>
           <Partition DefId="C3">
             <Condition>
               <Expression>
-                <Param><![CDATA["PARTNER_SATELLITE"]]></Param>
+                <Param><![CDATA["VOIP"]]></Param>
               </Expression>
-              <Partition DefId="C1">
+              <Partition DefId="C2">
                 <Condition>
-                  <Expression/>
+                  <Expression>
+                    <Param><![CDATA["PHONE"]]></Param>
+                  </Expression>
                   <ActionSet>
                     <Action DefId="A0">
                       <Expression>
-                        <Param><![CDATA[PARTNER_SATELLITE]]></Param>
+                        <Param><![CDATA[VOIP]]></Param>
                       </Expression>
                     </Action>
                   </ActionSet>
@@ -83,17 +85,17 @@
         </Condition>
         <Condition>
           <Expression>
-            <Param><![CDATA["CABLE"]]></Param>
+            <Param><![CDATA["VOIP"]]></Param>
           </Expression>
           <Partition DefId="C3">
             <Condition>
               <Expression>
-                <Param><![CDATA["CABLE"]]></Param>
+                <Param><![CDATA["VOIP"]]></Param>
               </Expression>
               <ActionSet>
                 <Action DefId="A0">
                   <Expression>
-                    <Param><![CDATA[CABLE50]]></Param>
+                    <Param><![CDATA[VOIP]]></Param>
                   </Expression>
                 </Action>
               </ActionSet>
@@ -102,20 +104,22 @@
         </Condition>
         <Condition>
           <Expression>
-            <Param><![CDATA["CABLE"]]></Param>
+            <Param><![CDATA["VOIP"]]></Param>
           </Expression>
           <Partition DefId="C3">
             <Condition>
               <Expression>
-                <Param><![CDATA["PARTNER_SATELLITE"]]></Param>
+                <Param><![CDATA["PHONE"]]></Param>
               </Expression>
-              <Partition DefId="C1">
+              <Partition DefId="C2">
                 <Condition>
-                  <Expression/>
+                  <Expression>
+                    <Param><![CDATA["VOIP"]]></Param>
+                  </Expression>
                   <ActionSet>
                     <Action DefId="A0">
                       <Expression>
-                        <Param><![CDATA[PARTNER_SATELLITE]]></Param>
+                        <Param><![CDATA[PHONE]]></Param>
                       </Expression>
                     </Action>
                   </ActionSet>
@@ -123,22 +127,6 @@
               </Partition>
             </Condition>
           </Partition>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-          </ActionSet>
         </Condition>
         <Condition>
           <Expression/>
@@ -258,13 +246,13 @@
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[recommendation]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[261]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[301]]></Data>
       <Data Name="Definitions(C0)#HeaderText"><![CDATA[existing product category]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[266]]></Data>
-      <Data Name="Definitions(C1)#HeaderText"><![CDATA[customer category]]></Data>
-      <Data Name="Definitions(C1)#Width"><![CDATA[261]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[306]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[unavailable]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[132]]></Data>
       <Data Name="Definitions(C3)#HeaderText"><![CDATA[availability]]></Data>
-      <Data Name="Definitions(C3)#Width"><![CDATA[179]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[228]]></Data>
     </ResourceSet>
   </Resources>
 </DT>
