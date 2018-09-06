@@ -26,7 +26,7 @@
             <parameter type="java.lang.String"/>
             <parameter type="com.ibm.cloud.refarch.wcs.model.Product[]"/>
             <body language="arl"><![CDATA[
-            Bundle.createBundle(name,products);
+            insert(Bundle.createBundle(name,products));
             ]]></body>
         </method>
     </class>

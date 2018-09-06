@@ -1,4 +1,13 @@
 # Vocabulary Properties
+com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV1#instance.label = INTERNETTV1
+com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV2#instance.label = INTERNETTV2
+com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV3#instance.label = INTERNETTV3
+com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV4#instance.label = INTERNETTV4
+com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV5#instance.label = INTERNETTV5
+com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV6#instance.label = INTERNETTV6
+com.ibm.cloud.refarch.wcs.model.Bundle.TRIPLEPLAY1#instance.label = TRIPLEPLAY1
+com.ibm.cloud.refarch.wcs.model.Bundle.TRIPLEPLAY2#instance.label = TRIPLEPLAY2
+com.ibm.cloud.refarch.wcs.model.Bundle.TRIPLEPLAY3#instance.label = TRIPLEPLAY3
 uuid = c5d01e5b-bcd7-445a-a529-c303222aa0a2
 
 # com.ibm.cloud.refarch.wcs.model.Availability
@@ -13,18 +22,7 @@ com.ibm.cloud.refarch.wcs.model.Availability.zipCode#phrase.navigation = {zip co
 
 # com.ibm.cloud.refarch.wcs.model.Bundle
 com.ibm.cloud.refarch.wcs.model.Bundle#concept.label = bundle
-com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV1#instance.label = INTERNETTV1
-com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV2#instance.label = INTERNETTV2
-com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV3#instance.label = INTERNETTV3
-com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV4#instance.label = INTERNETTV4
-com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV5#instance.label = INTERNETTV5
-com.ibm.cloud.refarch.wcs.model.Bundle.INTERNETTV6#instance.label = INTERNETTV6
-com.ibm.cloud.refarch.wcs.model.Bundle.TRIPLEPLAY1#instance.label = TRIPLEPLAY1
-com.ibm.cloud.refarch.wcs.model.Bundle.TRIPLEPLAY2#instance.label = TRIPLEPLAY2
-com.ibm.cloud.refarch.wcs.model.Bundle.TRIPLEPLAY3#instance.label = TRIPLEPLAY3
 com.ibm.cloud.refarch.wcs.model.Bundle.createBundleVirtual(java.lang.String,com.ibm.cloud.refarch.wcs.model.Product[])#phrase.action = create bundle with name {0} and products {1}
-com.ibm.cloud.refarch.wcs.model.Bundle.name#phrase.action = set the name of {this} to {name}
-com.ibm.cloud.refarch.wcs.model.Bundle.name#phrase.navigation = {name} of {this}
 com.ibm.cloud.refarch.wcs.model.Bundle.products#phrase.action = set the products of {this} to {product}
 com.ibm.cloud.refarch.wcs.model.Bundle.products#phrase.navigation = {product} of {this}
 

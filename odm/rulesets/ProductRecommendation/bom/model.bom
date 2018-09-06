@@ -86,6 +86,8 @@ public class Product
     public string productCategory;
     public Product(string arg1, string arg2, double arg3);
     public Product();
+    public boolean equals(object arg);
+    public int hashCode();
 }
 
 public class Recommendation

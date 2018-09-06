@@ -8,6 +8,6 @@
 	there is one product in the best recommended1sts of recommendation where the product category of this product is one of { "PHONE","VOIP"}, and
 	there is one product in the best recommended1sts of recommendation where the product category of this product is one of { "ADSL","FIBRE"},
 then
-	set the discount percent of recommendation to the discount percent of recommendation + 0.1;
+	print("set the discount percent of recommendation to the discount percent of recommendation + 0.1");
 		]]></definition>
 </ilog.rules.studio.model.brl:ActionRule>

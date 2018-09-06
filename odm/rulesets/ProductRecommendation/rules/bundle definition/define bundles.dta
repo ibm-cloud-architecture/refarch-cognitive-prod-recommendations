@@ -32,7 +32,7 @@
             <Action DefId="A0">
               <Expression>
                 <Param><![CDATA["Triple Play"]]></Param>
-                <Param><![CDATA[{ ADSL ,PHONE }]]></Param>
+                <Param><![CDATA[{ ADSL,PHONE,CABLE50 }]]></Param>
               </Expression>
             </Action>
           </ActionSet>
@@ -43,8 +43,8 @@
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[create bundle]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[355]]></Data>
-      <Data Name="Definitions(C2)#Width"><![CDATA[355]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[936]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[31]]></Data>
     </ResourceSet>
   </Resources>
 </DT>

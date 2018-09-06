@@ -140,10 +140,15 @@
 			"name": "TriplePlayBundleDiscount",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"__DecisionID__\": \"string\",\n  \"customer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"emailAddress\": \"string\",\n    \"age\": 3,\n    \"gender\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"children\": 3,\n    \"estimatedIncome\": 3,\n    \"previousZipCode\": \"string\",\n    \"newZipCode\": \"string\",\n    \"carOwner\": false,\n    \"profession\": \"string\",\n    \"churn\": 10517320,\n    \"maritalStatus\": \"string\",\n    \"existingProducts\": [\n      {\n        \"name\": \"string\",\n        \"packageName\": \"string\",\n        \"productCategory\": \"string\",\n        \"monthlyUsage\": 3,\n        \"downloadSpeed\": 3,\n        \"price\": 10517320\n      }\n    ],\n    \"profile\": {\n      \"name\": \"string\",\n      \"ageGrouping\": 3,\n      \"incomeGrouping\": 3\n    }\n  }\n}"
+					"raw": "{\n  \"customer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"emailAddress\": \"string\",\n    \"age\": 65,\n    \"gender\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"children\": 3,\n    \"estimatedIncome\": 3,\n    \"previousZipCode\": \"string\",\n    \"newZipCode\": \"6002\",\n    \"carOwner\": false,\n    \"profession\": \"string\",\n    \"churn\": 0.2,\n    \"maritalStatus\": \"string\",\n    \"existingProducts\": [\n      {\n        \"name\": \"string\",\n        \"packageName\": \"string\",\n        \"productCategory\": \"PHONE\",\n        \"monthlyUsage\": 3,\n        \"downloadSpeed\": 3,\n        \"price\": 10.00\n      },\n      {\n        \"name\": \"string\",\n        \"packageName\": \"string\",\n        \"productCategory\": \"ADSL\",\n        \"monthlyUsage\": 3,\n        \"downloadSpeed\": 3,\n        \"price\": 10.00\n      },\n      {\n        \"name\": \"string\",\n        \"packageName\": \"string\",\n        \"productCategory\": \"CABLE\",\n        \"monthlyUsage\": 3,\n        \"downloadSpeed\": 3,\n        \"price\": 10.00\n      }\n\n    ],\n    \"profile\": {\n      \"name\": \"string\",\n      \"ageGrouping\": 3,\n      \"incomeGrouping\": 3\n    }\n  }\n}"
 				},
 				"url": {
 					"raw": "http://localhost:9090/DecisionService/rest/v1/ProductRecommendationRuleApp/ProductRecommendation",

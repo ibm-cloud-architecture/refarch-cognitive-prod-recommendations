@@ -40,6 +40,11 @@ recommendation.customerId = customer.id;]]></Actions>
           <Package Name="price calculation"/>
         </RuleList>
       </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="bundle definition" Ordering="Default">
+        <RuleList>
+          <Package Name="bundle definition"/>
+        </RuleList>
+      </RuleTask>
       <StopTask Identifier="task_1">
         <Actions Language="irl"><![CDATA[recommendation.totalPrice = recommendation.calculateTotalPrice();]]></Actions>
       </StopTask>
@@ -52,14 +57,16 @@ recommendation.customerId = customer.id;]]></Actions>
       <TaskNode Identifier="node_4" Task="product recommendation"/>
       <TaskNode Identifier="node_5" Task="  product removal"/>
       <TaskNode Identifier="node_6" Task="price calculation"/>
+      <TaskNode Identifier="node_7" Task="bundle definition"/>
     </NodeList>
     <TransitionList>
-      <Transition Identifier="transition_0" Source="node_0" Target="node_2"/>
+      <Transition Identifier="transition_0" Source="node_0" Target="node_7"/>
       <Transition Identifier="transition_1" Source="node_2" Target="node_5"/>
       <Transition Identifier="transition_2" Source="node_3" Target="node_4"/>
       <Transition Identifier="transition_3" Source="node_4" Target="node_6"/>
       <Transition Identifier="transition_4" Source="node_5" Target="node_3"/>
       <Transition Identifier="transition_5" Source="node_6" Target="node_1"/>
+      <Transition Identifier="transition_6" Source="node_7" Target="node_2"/>
     </TransitionList>
   </Body>
   <Resources>
@@ -70,30 +77,35 @@ recommendation.customerId = customer.id;]]></Actions>
       <Data Name="node_3#height">53.402344</Data>
       <Data Name="node_0#height">21.0</Data>
       <Data Name="node_4#height">53.402344</Data>
+      <Data Name="node_7#y">91.0</Data>
       <Data Name="node_5#name">node_1</Data>
       <Data Name="node_2#name">node_2</Data>
       <Data Name="node_5#height">52.265625</Data>
       <Data Name="node_6#height">52.265625</Data>
+      <Data Name="node_7#height">52.265625</Data>
+      <Data Name="node_7#width">102.0</Data>
       <Data Name="node_2#width">103.74609</Data>
       <Data Name="node_0#width">21.0</Data>
-      <Data Name="node_3#y">303.36914</Data>
+      <Data Name="node_3#y">393.36914</Data>
       <Data Name="node_4#x">70.30371</Data>
-      <Data Name="node_4#y">406.77148</Data>
+      <Data Name="node_4#y">496.77148</Data>
       <Data Name="node_5#x">70.30371</Data>
-      <Data Name="node_5#y">200.53516</Data>
+      <Data Name="node_5#y">290.53516</Data>
       <Data Name="node_6#x">70.30371</Data>
       <Data Name="node_5#width">102.0</Data>
-      <Data Name="node_6#y">510.60547</Data>
+      <Data Name="node_6#y">599.60547</Data>
+      <Data Name="node_7#x">70.30371</Data>
       <Data Name="node_0#x">70.30371</Data>
       <Data Name="node_0#y">10.5</Data>
       <Data Name="node_1#x">70.30371</Data>
-      <Data Name="node_1#y">596.2383</Data>
+      <Data Name="node_1#y">686.2383</Data>
       <Data Name="node_2#x">70.30371</Data>
-      <Data Name="node_2#y">97.70117</Data>
+      <Data Name="node_2#y">187.70117</Data>
       <Data Name="node_3#x">70.30371</Data>
       <Data Name="node_1#name">node_2</Data>
       <Data Name="node_3#width">102.0</Data>
       <Data Name="node_4#name">node_4</Data>
+      <Data Name="node_7#name">node_1</Data>
       <Data Name="node_1#width">21.0</Data>
       <Data Name="node_6#name">node_1</Data>
       <Data Name="node_0#name">node_0</Data>
