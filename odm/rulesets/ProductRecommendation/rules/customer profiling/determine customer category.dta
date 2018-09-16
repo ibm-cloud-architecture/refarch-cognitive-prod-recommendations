@@ -212,9 +212,9 @@
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[customer category]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[525]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[410]]></Data>
       <Data Name="Definitions(C0)#HeaderText"><![CDATA[age]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[526]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[411]]></Data>
     </ResourceSet>
   </Resources>
 </DT></definition>

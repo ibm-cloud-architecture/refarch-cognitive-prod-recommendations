@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.rules.studio.model.decisionservice:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" ruleAppName="ProductRecommendationRuleApp" managingXom="true">
+<com.ibm.rules.studio.model.decisionservice:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" ruleAppName="ProductRecommendationRuleApp">
   <name>ProductRecommendationRuleApp</name>
   <uuid>2c4e18b1-de88-4ae6-8c49-ac1465865f29</uuid>
   <targets label="DecisionServerOnICP"/>
+  <targets label="Local"/>
   <operations operationName="productRecommendation">
     <operation href="productRecommendation.dop#9cdcfff0-c0ea-45c0-a0a8-1c26d2281fd9"/>
     <properties key="ruleset.version">

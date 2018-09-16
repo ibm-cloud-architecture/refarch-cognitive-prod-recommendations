@@ -4,7 +4,7 @@
   <uuid>9a728806-b8be-4c26-a28c-56b54a117f98</uuid>
   <locale>en_US</locale>
   <definition>
-<DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
   <Body>
     <Structure>
       <ConditionDefinitions>
@@ -37,16 +37,37 @@
             </Action>
           </ActionSet>
         </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[true]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["Int Phone1"]]></Param>
+                <Param><![CDATA[{ FIBRE25,PHONE }]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
       </Partition>
     </Contents>
   </Body>
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[create bundle]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[936]]></Data>
-      <Data Name="Definitions(C2)#Width"><![CDATA[31]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[536]]></Data>
+      <Data Name="Definitions(A0)[0]#HeaderText"><![CDATA[name]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[350]]></Data>
     </ResourceSet>
   </Resources>
-</DT>
-</definition>
+</DT></definition>
 </ilog.rules.studio.model.dt:DecisionTable>

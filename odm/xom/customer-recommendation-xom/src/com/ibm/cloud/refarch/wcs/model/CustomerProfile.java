@@ -52,4 +52,12 @@ public class CustomerProfile {
 		this.incomeGrouping = incomeGrouping;
 	}
 
+
+	@Override
+	public String toString() {
+		return "CustomerProfile [name=" + name + ", ageGrouping=" + ageGrouping
+				+ ", incomeGrouping=" + incomeGrouping + "]";
+	}
+	
+
 }

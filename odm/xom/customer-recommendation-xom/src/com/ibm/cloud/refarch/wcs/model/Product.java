@@ -80,6 +80,14 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [name=" + name + ", packageName=" + packageName
+				+ ", productCategory=" + productCategory + ", monthlyUsage="
+				+ monthlyUsage + ", downloadSpeed=" + downloadSpeed
+				+ ", price=" + price + "]";
+	}
 	
 /**	
 	public static Product FindProduct(String packageName)
@@ -92,4 +100,6 @@ public class Product {
 		return result;
 	}
 */
+	
+	
 }
