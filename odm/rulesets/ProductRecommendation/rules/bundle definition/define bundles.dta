@@ -38,19 +38,6 @@
           </ActionSet>
         </Condition>
         <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression>
-                <Param><![CDATA["Int Phone1"]]></Param>
-                <Param><![CDATA[{ FIBRE25,PHONE }]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
           <Expression/>
           <ActionSet>
             <Action DefId="A0">
@@ -64,9 +51,9 @@
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[create bundle]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[536]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[623]]></Data>
       <Data Name="Definitions(A0)[0]#HeaderText"><![CDATA[name]]></Data>
-      <Data Name="Definitions(C2)#Width"><![CDATA[350]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[438]]></Data>
     </ResourceSet>
   </Resources>
 </DT></definition>
