@@ -7,6 +7,8 @@ public class Bundle extends Product {
 	
 	private String name; 
 	private List<Product> products ;
+/**
+ * Commented out to allow bundle definitions in decision tables instead
 
 	public static final Bundle TRIPLEPLAY1 = new Bundle("Triple Play",Arrays.asList(Product.VOIP,FIBRE25,IPTV10));
 	public static final Bundle TRIPLEPLAY2 = new Bundle("Triple Play",Arrays.asList(VOIP,FIBRE25,IPTV50));
@@ -17,7 +19,7 @@ public class Bundle extends Product {
 	public static final Bundle INTERNETTV4 = new Bundle("Basic Internet & TV",Arrays.asList(FIBRE25,CABLE10));
 	public static final Bundle INTERNETTV5 = new Bundle("Basic Internet & TV",Arrays.asList(FIBRE25,CABLE50));
 	public static final Bundle INTERNETTV6 = new Bundle("Basic Internet & TV",Arrays.asList(FIBRE25,CABLE100));
-	
+ */	
 	public Bundle(String name, List<Product> products) {
 		super();
 		this.name = name;
