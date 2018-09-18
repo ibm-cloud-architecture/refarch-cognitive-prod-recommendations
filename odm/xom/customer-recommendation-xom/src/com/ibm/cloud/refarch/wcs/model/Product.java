@@ -8,6 +8,7 @@ public class Product {
 	private int downloadSpeed;
 	
 	private double price;
+	private String phoneNumber;
 
 	public static final Product ADSL = new Product("ADSL","ADSL",25.00);
 	public static final Product FIBRE25 = new Product("FIBRE25","FIBRE", 25.00);
@@ -79,6 +80,15 @@ public class Product {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	@Override
