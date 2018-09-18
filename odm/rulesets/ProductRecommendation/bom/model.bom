@@ -93,10 +93,17 @@ public class Product
 public class Recommendation
 {
     public java.util.List bestRecommended1st domain 0,* class com.ibm.cloud.refarch.wcs.model.Product;
+    public string bundleName;
     public string customerId;
     public double discountPercent
                 property update "true";
+    public readonly string internetSubscription;
+    public readonly double internetSubscriptionPrice;
+    public readonly string phoneSubscription;
+    public readonly double phoneSubscriptionPrice;
     public double totalPrice;
+    public readonly string tvSubscription;
+    public readonly double tvSubscriptionPrice;
     public Recommendation();
     public void addToBestRecommended1st(com.ibm.cloud.refarch.wcs.model.Product argument)
                 property update "true";

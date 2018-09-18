@@ -3,7 +3,6 @@
 	<name>ProductRecommendation</name>
 	<comment></comment>
 	<projects>
-		<project>customer-recommenation-xom</project>
 		<project>customer-recommendation-xom</project>
 	</projects>
 	<buildSpec>
@@ -14,6 +13,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>ilog.rules.studio.model.decisionProject</nature>
 		<nature>ilog.rules.studio.model.operationProject</nature>
 		<nature>ilog.rules.studio.model.ruleNature</nature>
 	</natures>

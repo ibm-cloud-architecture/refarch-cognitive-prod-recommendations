@@ -42,6 +42,42 @@
     </class>
     <class>
         <businessName>com.ibm.cloud.refarch.wcs.model.Recommendation</businessName>
+        <attribute>
+            <name>internetSubscription</name>
+            <getter language="arl"><![CDATA[
+            return this.internetSubscriptionProductCategory();
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>internetSubscriptionPrice</name>
+            <getter language="arl"><![CDATA[
+            return this.internetSubscriptionPrice();
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>phoneSubscription</name>
+            <getter language="arl"><![CDATA[
+            return this.phoneSubscriptionProductCategory();
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>phoneSubscriptionPrice</name>
+            <getter language="arl"><![CDATA[
+            return this.phoneSubscriptionPrice();
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>tvSubscription</name>
+            <getter language="arl"><![CDATA[
+            return this.tvSubscriptionProductCategory();
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>tvSubscriptionPrice</name>
+            <getter language="arl"><![CDATA[
+            return this.tvSubscriptionPrice();
+            ]]></getter>
+        </attribute>
         <method>
             <name>addToBestRecommended1st</name>
             <parameter type="com.ibm.cloud.refarch.wcs.model.Product"/>

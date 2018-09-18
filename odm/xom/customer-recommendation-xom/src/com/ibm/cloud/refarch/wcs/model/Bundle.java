@@ -48,5 +48,10 @@ public class Bundle extends Product {
 		Bundle bundle = new Bundle(name, Arrays.asList(products));
 		return bundle;
 	}
+
+	@Override
+	public String toString() {
+		return "Bundle [name=" + name + ", products=" + products + "]";
+	}
 	
 }

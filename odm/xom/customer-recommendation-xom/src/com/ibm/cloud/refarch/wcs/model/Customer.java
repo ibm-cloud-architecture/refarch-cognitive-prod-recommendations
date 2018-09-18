@@ -1,5 +1,6 @@
 package com.ibm.cloud.refarch.wcs.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
@@ -23,7 +24,7 @@ public class Customer {
 	private double churn;
 	private String maritalStatus;
 	
-	private List<Product> existingProducts;
+	private List<Product> existingProducts=new ArrayList<Product>();
 	private CustomerProfile profile;
 	
 	public String getId() {
@@ -139,6 +140,19 @@ public class Customer {
 	}
 	public void setMaritalStatus(String maritalStatus) {
 		this.maritalStatus = maritalStatus;
+	}
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", emailAddress="
+				+ emailAddress + ", age=" + age + ", gender=" + gender
+				+ ", type=" + type + ", status=" + status + ", children="
+				+ children + ", estimatedIncome=" + estimatedIncome
+				+ ", previousZipCode=" + previousZipCode + ", newZipCode="
+				+ newZipCode + ", carOwner=" + carOwner + ", profession="
+				+ profession + ", churn=" + churn + ", maritalStatus="
+				+ maritalStatus + ", existingProducts=" + existingProducts
+				+ ", profile=" + profile + "]";
 	}
 	
 	

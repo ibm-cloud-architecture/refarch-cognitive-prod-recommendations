@@ -4,7 +4,7 @@
   <uuid>0b2fe46a-6495-4fa4-bd4a-e242f1ef79cd</uuid>
   <locale>en_US</locale>
   <definition>
-<DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
   <Body>
     <Structure>
       <ConditionDefinitions>
@@ -18,6 +18,11 @@
         <ActionDefinition Id="A0">
           <ExpressionDefinition>
             <Text><![CDATA[set the discount percent of recommendation  to the discount percent of recommendation  + <a number>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[set the churn risk category of customer  to <a string>]]></Text>
           </ExpressionDefinition>
         </ActionDefinition>
       </ActionDefinitions>
@@ -34,6 +39,11 @@
                 <Param><![CDATA[0]]></Param>
               </Expression>
             </Action>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA["NA"]]></Param>
+              </Expression>
+            </Action>
           </ActionSet>
         </Condition>
         <Condition>
@@ -46,6 +56,11 @@
             <Action DefId="A0">
               <Expression>
                 <Param><![CDATA[0.02]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA["LOW"]]></Param>
               </Expression>
             </Action>
           </ActionSet>
@@ -62,6 +77,11 @@
                 <Param><![CDATA[0.05]]></Param>
               </Expression>
             </Action>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA["MEDIUM"]]></Param>
+              </Expression>
+            </Action>
           </ActionSet>
         </Condition>
         <Condition>
@@ -75,12 +95,20 @@
                 <Param><![CDATA[0.07]]></Param>
               </Expression>
             </Action>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA["HIGH"]]></Param>
+              </Expression>
+            </Action>
           </ActionSet>
         </Condition>
         <Condition>
           <Expression/>
           <ActionSet>
             <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
               <Expression/>
             </Action>
           </ActionSet>
@@ -91,12 +119,7 @@
             <Action DefId="A0">
               <Expression/>
             </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
+            <Action DefId="A1">
               <Expression/>
             </Action>
           </ActionSet>
@@ -107,12 +130,7 @@
             <Action DefId="A0">
               <Expression/>
             </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
+            <Action DefId="A1">
               <Expression/>
             </Action>
           </ActionSet>
@@ -123,12 +141,7 @@
             <Action DefId="A0">
               <Expression/>
             </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
+            <Action DefId="A1">
               <Expression/>
             </Action>
           </ActionSet>
@@ -139,12 +152,7 @@
             <Action DefId="A0">
               <Expression/>
             </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
+            <Action DefId="A1">
               <Expression/>
             </Action>
           </ActionSet>
@@ -155,12 +163,7 @@
             <Action DefId="A0">
               <Expression/>
             </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
+            <Action DefId="A1">
               <Expression/>
             </Action>
           </ActionSet>
@@ -171,12 +174,7 @@
             <Action DefId="A0">
               <Expression/>
             </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
+            <Action DefId="A1">
               <Expression/>
             </Action>
           </ActionSet>
@@ -187,12 +185,7 @@
             <Action DefId="A0">
               <Expression/>
             </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
+            <Action DefId="A1">
               <Expression/>
             </Action>
           </ActionSet>
@@ -203,12 +196,95 @@
             <Action DefId="A0">
               <Expression/>
             </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
           </ActionSet>
         </Condition>
         <Condition>
           <Expression/>
           <ActionSet>
             <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression/>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
               <Expression/>
             </Action>
           </ActionSet>
@@ -219,11 +295,12 @@
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[discount percent]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[483]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[458]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[customer churn category]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[109]]></Data>
       <Data Name="Definitions(C0)#HeaderText"><![CDATA[customer churn score]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[484]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[565]]></Data>
     </ResourceSet>
   </Resources>
-</DT>
-</definition>
+</DT></definition>
 </ilog.rules.studio.model.dt:DecisionTable>
