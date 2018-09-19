@@ -1,42 +1,67 @@
 # Product Recommendations with Watson Assistant and Decision Management
 
-This project demonstrates how to leverage Watson Assistant to gather information about the customer intent, and propose the best product recommendations from his profile and the set of answers / facts gathered during the conversation.
+This project demonstrates how to leverage Watson Assistant (Watson conversation) to gather information about the customer intent, and propose the best product recommendations from the customer profile, the existing owned products and the set of answers / facts gathered during the conversation.
 
-This project is part of the **IBM Cognitive Reference Architecture** compute model available at https://github.com/ibm-cloud-architecture/refarch-cognitive.
+This project is part of the **IBM Cognitive Reference Architecture** compute model available at https://github.com/ibm-cloud-architecture/refarch-cognitive and https://github.com/ibm-cloud-architecture/refarch-analytics
+
+## Table of contents
+* [Architecture](#architecture)
+* [Use case](#use_case)
+* [Method](#method)
+* [Build and run](#build_and_run)
+* [Recommendation ruleset explanation](docs/rules.md)
+* [ODM Governance practices](docs/odm-governance.md)
+* [Simulation with ODM](docs/simulation.md)
+* [Deploy to IBM Cloud Private](https://github.com/ibm-cloud-architecture/refarch-integration/tree/master/docs/odm)
+* [Watson Assistant Implementation](#watson_assistant_logic)
+* [Decision composer project](#odm_decision_composer_project)
+* [Broker code explanation](#code_explanation)
+* [Compendium](#compendium)
 
 ## Architecture
 The current project is supporting the following architecture:
 
 ![](docs/pr-odm-wcs.png)
 
-The broker code is managing the interactions with end users via different channels. For demonstration point of view only the web interface is used. Watson Assistant is supporting the natural language understanding with intent classification and entity extraction, and then the dialog flow. ODM decision engine is used for best action and recommendations to be added on top of the conversation. It uses the Watson Assistant context to get facts from the dialog done with the end user. To deliver accurate recommendations the broker code needs to enrich the data set for ODM so call to backend system is needed. API management can be added to the API provider so measurement of API usage can be done.
+The WebApp / Backend For Frontend code is managing the interactions with end users via different channels. For demonstration point of view only the web interface is used. Watson Assistant is supporting the natural language understanding with intent classification and entity extraction, and then the dialog flow. ODM decision engine is used for best action and recommendations as an enrichment service on top of the chatbot conversation.
+The solution uses the Watson Assistant context to get facts accumulated during the dialog done with the end user. To deliver accurate recommendations the code needs to enrich the data about the customer so ODM rules will have more data point to implement the business recommendation. API management may be added to the API provider so measurement of API usage can be done.
 
+## Method
 From a design and implementation point of view the solution illustrates how to consume a Watson Assistant workspace into [ODM Decision composer](http://ibm.biz/DecisionComposer) to prepare the object model for rule authoring. Use your IBM Cloud credential to connect to Decision Composer.
+Once the model and decision are defined, it is possible to get the project loaded into ODM Rule Designer and have developer enriching the rule business object model and add more rules.
 
-*Note*: the Business Rules Service for Bluemix [has been deprecated](https://www.ibm.com/blogs/bluemix/2018/02/deprecating-business-rules-service/), and the code of this demonstration has been adapted to use the new Execution feature within Decision Composer (introduced on May 17th in V0.26). However, should you still want to see how the demonstration was set with the Business Rules Service, then you can do so by going to the [`bluemix-service`](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations/tree/bluemix-service) branch.
+*Note*: the Business Rules Service for Bluemix [has been deprecated](https://www.ibm.com/blogs/bluemix/2018/02/deprecating-business-rules-service/), and the code of this demonstration has been adapted to use the new Execution feature within Decision Composer (introduced on May 17th in V0.26).
+
+However, we also deploy ODM on IBM Cloud Private and deploy ruleset and rules to the execution server and Decision Center.
 
 ## Use Case
-This project shows how a customer could have a dialog with his telco operator when he wants to move. The chatbot will detect the intent to move, and ask questions to get the data of the move and the zipcode of the new address. The idea is to use the date to check if the telco provider can actually provide a transfer of service before the move date. And to check the available services at the destination address, so as to recommend the best product or bundle.
+This project shows how a customer could have a dialog with his telco operator when he wants to move / reallocate. The chatbot will detect the intent to move, and ask questions to get the date for the move and the zip code of the new address. The idea is to use the date to check if the telco provider can actually provide a transfer of service before the move date. And to check the available services at the destination address, so as to recommend the best product or bundle.
 So the bot gathers the data from the customer, and at a given point of the dialog, the broker will invoke a Decision Service, implemented with ODM Decision Composer, and executed using Decision Composer execution feature, on IBM Cloud.
 
 ![](docs/advisor_1.png)
 
-## Build and run
-The code is a reuse of the conversation broker code detailed in [this project](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker)
-In summary, follow those steps:
-1. Clone this repository, you will get the broker code, the source for the Watson Assistant workspace and the ODM Decision Composer project
-  * Watsont Assistant workspace in [that reference repository](wcs-workspace/Complex-Relocation-workspace.json)
-  * ODM Decision Composer project in [that reference repository](odm/Network_subscription_recommendation.dproject)
+The following screen capture is from the [Case Portal application](https://github.com/ibm-cloud-architecture/refarch-caseportal-app) that is the most updated demonstration app.
 
-1. Create an instance of the Watson Assistant service in your IBM Cloud space, [log into WA](https://watson-assistant.ng.bluemix.net/), and import the project from the file `wcs-workspace/Complex-Relocation-workspace.json`, then click on the View Details menu to display the workspace ID, and copy it to the clipboard:  
+## Build and run
+The code is a reuse of the conversation broker code detailed in [this project](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker).
+
+In summary, follow those steps:
+
+1. Clone this repository, you will get the broker code, the source for the Watson Assistant workspace and the ODM Decision Composer project
+   * Watson Assistant workspace in [that reference repository](wcs-workspace/Complex-Relocation-workspace.json)
+   * ODM Decision Composer project in [that reference repository](odm/composer/Network_subscription_recommendation.dproject)
+   * Java model for the execution [XOM project](odm/xom/customer-recommendation-xom)
+   * The [rule project](odm/ruleset/ProductRecommendation) to load into Designer or Decision Center.   
+
+1. Create an instance of the Watson Assistant service in your IBM Cloud space, [log into Watson Assitant](https://watson-assistant.ng.bluemix.net/), and import the project from the file `wcs-workspace/Complex-Relocation-workspace.json`, then click on the View Details menu to display the workspace ID, and copy it to the clipboard:  
 
  ![](docs/wcs_id.png)  
 
-1. Edit the [the config.json](server/config/config.json) and paste the `WorkspaceId` as the value for the `conversation.workspace` field. While in this file, also set the credentials correctly. You can generate credentials for access to your instance of WCS and view them from the _Service Credentials_ page of your service, as show here:
+1. Edit the [the config.json in this project](server/config/config.json) and paste the `WorkspaceId` as the value for the `conversation.workspace` field. While in this file, also set the other credentials correctly. You can generate credentials for access to your instance of Watson Assistant and view them from the _Service Credentials_ page of your service, as show here:
 
  ![](docs/wcs_credentials.png)
 
- With these steps done, the broker will now be able to access you own instance of the WA service, invoking your own copy of the conversation project.
+ With these steps done, the broker will now be able to access you own instance of the Watson Assistant service, invoking your own copy of the conversation project.
 
 1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) go to the Settings page:
 
@@ -60,6 +85,7 @@ Edit the [the config.json](server/config/config.json) and paste this API key as 
 
 You're done! Now when the broker reaches the point in the dialog where a recommendation is needed, it will invoke the execution REST API of Decision Composer to run your project.
 Note that in this demonstration, we have left the version of the project hard-coded in the config file, so if you save the Decision Composer project multiple times, thus changing the revision number, you will have to update the `config.json` file
+
 
 ### Execute the web app locally.
 * Go back to the root of the repository, execute the following commands to get node packages dependencies, build the angular 4 front end, and start the web server:
