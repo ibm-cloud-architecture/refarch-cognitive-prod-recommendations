@@ -13,9 +13,9 @@ This project is part of the **IBM Cognitive Reference Architecture** compute mod
 * [ODM Governance practices](docs/odm-governance.md)
 * [Simulation with ODM](docs/simulation.md)
 * [Deploy to IBM Cloud Private](https://github.com/ibm-cloud-architecture/refarch-integration/tree/master/docs/odm)
-* [Watson Assistant Implementation](#watson_assistant_logic)
-* [Decision composer project](#odm_decision_composer_project)
-* [Broker code explanation](#code_explanation)
+* [Watson Assistant Implementation](#watson-assistant-logic)
+* [Decision composer project](#odm-decision-composer-project)
+* [Broker code explanation](#code-explanation)
 * [Compendium](#compendium)
 
 ## Architecture
@@ -55,13 +55,13 @@ In summary, follow those steps:
 
 1. Create an instance of the Watson Assistant service in your IBM Cloud space, [log into Watson Assitant](https://watson-assistant.ng.bluemix.net/), and import the project from the file `wcs-workspace/Complex-Relocation-workspace.json`, then click on the View Details menu to display the workspace ID, and copy it to the clipboard:  
 
- ![](docs/wcs_id.png)  
+  ![](docs/wcs_id.png)  
 
 1. Edit the [the config.json in this project](server/config/config.json) and paste the `WorkspaceId` as the value for the `conversation.workspace` field. While in this file, also set the other credentials correctly. You can generate credentials for access to your instance of Watson Assistant and view them from the _Service Credentials_ page of your service, as show here:
 
- ![](docs/wcs_credentials.png)
+  ![](docs/wcs_credentials.png)
 
- With these steps done, the broker will now be able to access you own instance of the Watson Assistant service, invoking your own copy of the conversation project.
+   With these steps done, the broker will now be able to access you own instance of the Watson Assistant service, invoking your own copy of the conversation project.
 
 1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) go to the Settings page:
 
@@ -75,16 +75,17 @@ Edit the [the config.json](server/config/config.json) and paste this API key as 
 
 1. In [ODM Decision composer](http://ibm.biz/DecisionComposer) import the _Network_subscription_recommendation_ project and examine it. You can `Test` it within Decision Composer, sample input data is provided. The following screen shot illustrates the a customer, named 'Young' and the output from the rule execution, recommending a Fiber subscription at 25$.  
 
- ![](docs/decision-comp-test.png)
+  ![](docs/decision-comp-test.png)
 
 1. Retrieve the REST URL for your decision service: from the Home page of `Decision Composer`, click on the project's menu (three vertical dots) and use the `Execute` choice to display the URL which Decision Composer generates for execution of your project. Take note of the project unique ID and version, and place this information in the [the config.json](server/config/config.json) as shown here:
 
- ![](docs/decision-comp-execute.png)
- ![](docs/decision-comp-execute2.png)
- ![](docs/decision-comp-execute3.png)
+  ![](docs/decision-comp-execute.png)
+  ![](docs/decision-comp-execute2.png)
+  ![](docs/decision-comp-execute3.png)
 
-You're done! Now when the broker reaches the point in the dialog where a recommendation is needed, it will invoke the execution REST API of Decision Composer to run your project.
-Note that in this demonstration, we have left the version of the project hard-coded in the config file, so if you save the Decision Composer project multiple times, thus changing the revision number, you will have to update the `config.json` file
+ You're done! Now when the broker reaches the point in the dialog where a recommendation is needed, it will invoke the execution REST API of Decision Composer to run your project.
+
+ Note that in this demonstration, we have left the version of the project hard-coded in the config file, so if you save the Decision Composer project multiple times, thus changing the revision number, you will have to update the `config.json` file
 
 
 ### Execute the web app locally.
@@ -162,10 +163,7 @@ if (response.context.action === "recommend") {
 
     });
 ```
-One of the programming challenge is to play well with the asynchronous call done by the HTTP module and chain callback function. In the code above the third argument is the next function to call when the HTTP response arrived in the ODM client. SendMessage is the method used to call Watson Conversation.
-
-## Potential improvements
-The data model for the rule execution can be enriched and defined as a Java model, then a dedicated rule project can be done and deployed using the standard ODM concept of operations and tooling.
+One of the programming challenge is to play well with the asynchronous call done by the HTTP module and chain callback function. In the code above the third argument is the next function to call when the HTTP response arrived in the ODM client. SendMessage is the method used to call Watson Assistant.
 
 ## Compendium
 * [Cognitive conversation paper](https://www.ibm.com/devops/method/content/architecture/cognitiveConversationDomain)
