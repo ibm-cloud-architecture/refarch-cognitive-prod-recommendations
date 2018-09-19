@@ -15,4 +15,9 @@
             <uri value="reslib://ProductRecommendationRuleApp_1.0/1.5"/>
         </xom>
     </config>
+<config serverURL="http://172.16.40.133:32429/res">
+        <xom>
+            <uri value="reslib://ProductRecommendationRuleApp_1.0/1.0"/>
+        </xom>
+    </config>
 </project-deployment>
