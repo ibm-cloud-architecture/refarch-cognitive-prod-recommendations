@@ -4,7 +4,7 @@
   <uuid>9a728806-b8be-4c26-a28c-56b54a117f98</uuid>
   <locale>en_US</locale>
   <definition>
-<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+<DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
   <Body>
     <Structure>
       <ConditionDefinitions>
@@ -38,6 +38,32 @@
           </ActionSet>
         </Condition>
         <Condition>
+          <Expression>
+            <Param><![CDATA[true]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["Triple Play Plus"]]></Param>
+                <Param><![CDATA[{ FIBRE25,PHONE,CABLE100 }]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[true]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["Triple Play Ultra"]]></Param>
+                <Param><![CDATA[{ FIBRE30,IPTV100,VOIP }]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
           <Expression/>
           <ActionSet>
             <Action DefId="A0">
@@ -51,10 +77,11 @@
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[create bundle]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[623]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[880]]></Data>
       <Data Name="Definitions(A0)[0]#HeaderText"><![CDATA[name]]></Data>
-      <Data Name="Definitions(C2)#Width"><![CDATA[438]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[87]]></Data>
     </ResourceSet>
   </Resources>
-</DT></definition>
+</DT>
+</definition>
 </ilog.rules.studio.model.dt:DecisionTable>
