@@ -92,7 +92,7 @@
           <ActionSet>
             <Action DefId="A0">
               <Expression>
-                <Param><![CDATA[0.25]]></Param>
+                <Param><![CDATA[0.07]]></Param>
               </Expression>
             </Action>
             <Action DefId="A1">
