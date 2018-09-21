@@ -167,6 +167,7 @@ One of the programming challenge is to play well with the asynchronous call done
 
 ## Compendium
 * [Cognitive conversation paper](https://www.ibm.com/devops/method/content/architecture/cognitiveConversationDomain)
+* [IBM Operational Decision Management](https://www.ibm.com/us-en/marketplace/operational-decision-manager)
 * [Watson Assistant Training](https://www.ibm.com/cloud/garage/tutorials/watson_conversation_support)
 * [ODM Decision composer](http://ibm.biz/DecisionComposer)
 * [Angular 2 Material](https://material.angular.io/components/categories) used for widget in UI.
