@@ -4,7 +4,7 @@
   <uuid>0b2fe46a-6495-4fa4-bd4a-e242f1ef79cd</uuid>
   <locale>en_US</locale>
   <definition>
-<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+<DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
   <Body>
     <Structure>
       <ConditionDefinitions>
@@ -295,12 +295,13 @@
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[discount percent]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[458]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[390]]></Data>
       <Data Name="Definitions(A1)#HeaderText"><![CDATA[customer churn category]]></Data>
-      <Data Name="Definitions(A1)#Width"><![CDATA[109]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[97]]></Data>
       <Data Name="Definitions(C0)#HeaderText"><![CDATA[customer churn score]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[565]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[480]]></Data>
     </ResourceSet>
   </Resources>
-</DT></definition>
+</DT>
+</definition>
 </ilog.rules.studio.model.dt:DecisionTable>
