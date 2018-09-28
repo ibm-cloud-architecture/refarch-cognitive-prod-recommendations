@@ -1,6 +1,6 @@
 # ODM Simulation Practices 
 
-## Use ODM Simulation Capabilities to evaluate a churn management strategy
+## Use ODM simulation capabilities to evaluate a churn management strategy
 
 This part demonstrates how a churn program manager can use ODM simulation capabilities to evaluate a churn management strategy.
 
@@ -10,11 +10,11 @@ NB : For the demo we are using an excel , file but ODM allow to use a “custom 
 Then, we will run the simulation, analyze the report, change our discount churn Decision Table to evaluate the financial cost of adding a new churn risk category. We will add new KPIs, run again the simulation and compare the result to the previous simulation run.
 
 ## Table of contents
-* [The Challenge] (#The-Challenge)
-* [Steps to build a Simulation] (#Steps-to-build-a-Simulation)
-* [Simulation Run and report Analysis] (#Simulation-Run-and-report-Analysis)
+* [The Challenge](#The-Challenge)
+* [Steps to build a Simulation](#Steps-to-build-a-Simulation)
+* [Simulation Run and report Analysis](#Simulation-Run-and-report-Analysis)
 * [Policy update](#Policy-update)
-* [Simulation Report Comparison] (#Simulation-Report-Comparison)
+* [Simulation Report Comparison](#Simulation-Report-Comparison)
 
 
 ## The Challenge
@@ -117,9 +117,10 @@ Is it simply an area where we have less customer than in the others area or is i
 We can add new KPIs specifically to investigate more this area
 The last diagram “high churn risk category per group age” which regroup the customer in the high category of churn risk regrouped by age (Student, Adult, Retired). 
 We observe in our sample population that the group age that is more likely to churn is the student group followed by the adult group.
-We can add more rules that add additional  benefit specifically to retain student customer
+We can add more rules that add additional  benefit specifically to retain student customer.
 
-##Policy update
+
+## Policy update
 
 Change Discount Table
 We will change our discount table based on churn risk score and assess how much would the change cost in term of revenue.
