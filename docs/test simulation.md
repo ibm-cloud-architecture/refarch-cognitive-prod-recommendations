@@ -10,11 +10,11 @@ NB : For the demo we are using an excel , file but ODM allow to use a “custom 
 Then, we will run the simulation, analyze the report, change our discount churn Decision Table to evaluate the financial cost of adding a new churn risk category. We will add new KPIs, run again the simulation and compare the result to the previous simulation run.
 
 ## Table of contents
-* [The Challenge](#The-Challenge)
-* [Steps to build a Simulation](#Steps-to-build-a-Simulation)
-* [Simulation Run and report Analysis](#Simulation-Run-and-report-Analysis)
-* [Policy update](#Policy-update)
-* [Simulation Report Comparison](#Simulation-Report-Comparison)
+* [The Challenge](#the-challenge)
+* [Steps to build a Simulation](#steps-to-build-a-simulation)
+* [Simulation Run and report Analysis](#simulation-run-and-report-analysis)
+* [Policy update](#policy-update)
+* [Simulation Report Comparison](#simulation-report-comparison)
 
 
 ## The Challenge
@@ -51,6 +51,7 @@ the total price of 'recommendation' when the new zip code of 'customer' is "XXXX
 ![](sim/sim-metrics.png)
 
 **KPIs**
+
 KPIs show the results from running a simulation. To define a KPI, you pair a metric with a KPI value. 
 The KPI is an aggregation of a metrics on all the simulation execution
 For example, to create a KPI that shows the total estimated revenue based on the product recommendations that are handled by the application, you might use the KPI expression sum of 'Revenue'. (revenue is the metrics we defined earlier)  When the simulation runs, it adds up the amounts of the revenue and displays the total in the simulation report.
@@ -75,6 +76,7 @@ number of 'processed high churn score' grouped by 'age group'
 ![](sim/sim-kpis.png)
 
 **Data**
+
 Simulations use business information that is provided as input data. To run a simulation, 
 
 We can use real data, ODM provide a custom data provider that allow to connect to real data
@@ -83,6 +85,7 @@ The Excel format displays data clearly and can be changed easily.
 You can generate and download an Excel data file from the Business console, add data to it locally, and then upload it back to the console. That is what we are using for this demonstration
 
 **Report formats**
+
 When you run a simulation, it displays its results in a report. You can define various reports for a simulation to generate different reports.
 You lay out a report in a template by adding sections and KPIs. You can add as many elements as necessary. The KPIs can be displayed as text or as graphs (PIE, Bar, line)
 
