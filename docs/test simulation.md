@@ -22,7 +22,7 @@ Then, we will run the simulation, analyze the report, change our discount churn 
 The rule  : “ discount customer churn” below shows how the project use ODM to apply a discount to customer based on their churn risk score. 
  The rule currently has 3 churn risk categories (LOW, MEDIUM, HIGH) 
 
-![](./sim-discount_customer_churn.png)
+![](sim/sim-discount_customer_churn.png)
 
 A challenge a churn management program manager typically face is to evaluate the accuracy and cost effectiveness of his churn management strategy.
 Does the company use the right number of churn risk category? use the right threshold value for each category?  use the right discount value? 
@@ -35,7 +35,7 @@ ODM will allow to run simulation against historical data to (learn) evaluate how
 
 The churn program manager defines metrics and KPI to measure the quality and impact of a change and compare it to different alternatives
 
-![](./sim-simulation_workflow.png)
+![](sim/sim-simulation_workflow.png)
 
 **Metrics**
 
@@ -48,7 +48,7 @@ We can define conditional expression on  metrics
 Ex : revenue for zip code in specific area
 the total price of 'recommendation' when the new zip code of 'customer' is "XXXX" 
 
-![](./sim-metrics.png)
+![](sim/sim-metrics.png)
 
 **KPIs**
 KPIs show the results from running a simulation. To define a KPI, you pair a metric with a KPI value. 
@@ -72,7 +72,7 @@ number of 'processed high churn score'
 KPI 5:  HIGH churn risk customer per age Group
 number of 'processed high churn score' grouped by 'age group' 
 
-![](./sim-kpis.png)
+![](sim/sim-kpis.png)
 
 **Data**
 Simulations use business information that is provided as input data. To run a simulation, 
@@ -93,7 +93,7 @@ Total revenue, distribution of revenue per churn risk category, distribution of 
 In a second section we take a further   look at the high churn population  computing their number and how they are distributed per age group (Student, Adult, Retired) 
 Configuration of the KPI :distribution of revenue per churn risk category
 
-![](./sim-report_format.png)
+![](sim/sim-report_format.png)
 
 **Simulations**
 
@@ -103,7 +103,7 @@ You can interrupt the generation of a report during a simulation. If you do, the
 ## Simulation Run and report Analysis
 
 
-![](./sim-run_before_rule_change.png)
+![](sim/sim-run_before_rule_change.png)
 
 We are looking at a segment of a population in 5 Areas
 
@@ -127,11 +127,11 @@ We will change our discount table based on churn risk score and assess how much 
 
 We add a new row for the category of customer with a churn risk score between 0.6 and 0.75 . we call this category MEDIUM HIGH
 
-![](./sim-discount_customer_churn_with_new_category.png)
+![](sim/sim-discount_customer_churn_with_new_category.png)
 
 We can compare our change with the previous version. The new version is on the right.
 
-![](./ sim-discount_customer_churn_comparison.png)
+![](sim/sim-discount_customer_churn_comparison.png)
 
 **Adding two KPIs**
 We also change the report format to add a new section 
@@ -151,16 +151,16 @@ The result of the new simulation run  show that even with a discount applied on 
 We can conclude that the segment with customer of medium risk (0.5 to 0.75) we were addressing previously is not accurate enough.
 We can run more  simulation to continue to asses and refine the value of the discount we want to put on the new “MEDIUM HIGH” segment
 
-![](./sim-run_after_rule_change.png)
+![](sim/sim-run_after_rule_change.png)
 
 We can let ODM compare two selected simulation run  
 
-![](./sim-run_after_rule_change_comparison.png)
+![](sim/sim-run_after_rule_change_comparison.png)
 
 We see in the new Report that 54% of the population with high churn score live in the 6003 zip code area and that 60 % of the revenue in that area come from customer that are likely to churn (medium high to high segment)
 We need to implement a strategy that will be more aggressive for that area.
 
-![](./sim-run_two_additional_kpis.png)
+![](sim/sim-run_two_additional_kpis.png)
 
 **Conclusion**
 In summary we have created metrics, KPIs, and configured simulation report format, to evaluate a churn management strategy. We ran different simulation,   compared different alternatives and make improvement decision based on the simulation result. 
