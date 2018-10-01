@@ -174,4 +174,11 @@ One of the programming challenge is to play well with the asynchronous call done
 
 
 ## Contribute
+The current contributors of this content are:
+* [Guilhem Molines - ODM Product Architect at IBM France](https://www.linkedin.com/in/guilhemmolines/)
+* [Matthew Voss - Architect Cognitive Process Transformation Global Watson ](https://www.linkedin.com/in/matthew-voss-3a27366/)
+* [Jean Luc Correa - ODM Consultant - France](https://www.linkedin.com/in/joseph-luc-correa-00389333/)
+* [Jordan Acock - Software consultant - IBM](https://www.linkedin.com/in/jordan-acock-8ba91152/)
+* [Zach Silverstein - Software consultant - IBM](https://www.linkedin.com/in/zsilverstein/)
+* [Jerome Boyer - STSM Cloud architecture solution engineering](https://www.linkedin.com/in/jeromeboyer/)
 See the process in [main cognitive repository](https://github.com/ibm-cloud-architecture/refarch-cognitive).
