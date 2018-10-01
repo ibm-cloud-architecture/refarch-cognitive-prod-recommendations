@@ -1,6 +1,6 @@
 # ODM Simulation Practices
 
-Update 09/29/2018- Author: [Jean Luc Correa - ODM Consultant - France](https://www.linkedin.com/in/joseph-luc-correa-00389333/)
+Update 09/29/2018- Author: [Joseph Luc Correa - ODM Consultant - France](https://www.linkedin.com/in/joseph-luc-correa-00389333/)
 
 ## Use ODM simulation capabilities to evaluate a churn management strategy
 
