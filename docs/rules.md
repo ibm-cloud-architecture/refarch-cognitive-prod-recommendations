@@ -5,7 +5,7 @@
 The product recommendation decision services address the scenario in which an existing customer would like to move to a new address. The products available at the new address may not be the same ones available at the current address. The decision service will recommend a new set of products for the customer based on their existing products, their new location, and the customer churn or the possibility that this customer might leave to another company that has better prices or a product set that better fits their needs. 
 
 ## Rule flow
-The high level steps or tasks needed to make the decision are captured in the ruleflow diagram below
+The high level steps or tasks needed to make the decision are captured in the ruleflow diagram below. Subsequent sections describe the details for each rule flow task. 
 ![Main Rule Flow](ruleflow.png)
 
 ## Bundle Definition
@@ -33,7 +33,7 @@ For each of the three categories of products, we can now make a recommendation f
 The final price is calculated by applying a discount for the likelihood of customer churn and the products the customer has selected. The table below shows that the discount increases as the customer churn score increases. 
 ![Price Caclulation](price-calculation1.png)
 
-The products selected determine whether the customer is eligible for a Bundle discount. If the customer has selected products that are in a Bundle, they will receive the Bundle discount. 
+The products selected determine whether the customer is eligible for a Bundle discount. If the customer has selected products that are in the Bundle called "Triple Play", they will receive the Bundle discount. The eligible products are compared to those in the Bundles defined earlier and inserted into working memory. 
 ![Price Caclulation](price-calculation2.png)
 
 ## Finalization
