@@ -2,7 +2,6 @@
 
 
 ## Introduction
-
 The product recommendation decision services address the scenario in which an existing customer would like to move to a new address. The products available at the new address may not be the same ones available at the current address. The decision service will recommend a new set of products for the customer based on their existing products, their new location, and the customer churn or the possibility that this customer might leave to another company that has better prices or a product set that better fits their needs. 
 
 ## Rule flow
@@ -23,8 +22,19 @@ With a baseline set of available products from which to choose, the next step is
 ![Product Removal](product-removal.png)
 
 ## Customer Profiling
-
+Next, the rules categorize the customer as one of Retired, Adult, or Student based on their age. Different products may be more appropriate for different categories of customer. 
+![Customer Profiling](customer-profiling.png)
 
 ## Product Recommendation
+For each of the three categories of products, we can now make a recommendation for this customer based on their existing products, the available products and the customer categoy. For example below is the table that recommends different internet subscriptions for each category of customer. Similar tables exist for the other product types.
+![Product Recommendation](product-recommendation.png)
 
 ## Price Calculation
+The final price is calculated by applying a discount for the likelihood of customer churn and the products the customer has selected. The table below shows that the discount increases as the customer churn score increases. 
+![Price Caclulation](price-calculation1.png)
+
+The products selected determine whether the customer is eligible for a Bundle discount. If the customer has selected products that are in a Bundle, they will receive the Bundle discount. 
+![Price Caclulation](price-calculation2.png)
+
+## Finalization
+In the last step the total price is calculated as the sum of the prices of all the products multiplied by 1 minus the discount percentage. 
