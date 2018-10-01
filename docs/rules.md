@@ -7,7 +7,7 @@ The product recommendation decision services address the scenario in which an ex
 
 ## Rule flow
 The high level steps or tasks needed to make the decision are captured in the ruleflow diagram below
-![alt text](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations/tree/master/docs/ruleflow.png "Main Recommendations Ruleflow")
+![Main Rule Flow](ruleflow.png)
 
 ## Bundle Definition
 In the first task we define the concept of a Bundle. A Bundle is a set of related products with some special features when combined, for example special pricing for purchasing all the products in the Bundle. The decision table, pictured below, allows the business user to define the Bundles independently of the main product database and to control these product offerings. 
