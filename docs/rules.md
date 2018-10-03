@@ -10,7 +10,7 @@ The high level steps or tasks needed to make the decision are captured in the ru
 
 ## Bundle Definition
 In the first task we define the concept of a Bundle. A Bundle is a set of related products with some special features when combined, for example special pricing for purchasing all the products in the Bundle. The decision table, pictured below, allows the business user to define the Bundles independently of the main product database and to control these product offerings. 
-![Bundle Definition](bunde-definition.png)
+![Bundle Definition](bundle-definition.png)
 In the action part of the rule, the Bundle is created and inserted into working memory. As we will see later, they are subsequently used to  determine a discount amount for customers who purchase the Bundle.
 
 ## Product Availability
